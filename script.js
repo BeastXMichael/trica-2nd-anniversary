@@ -134,8 +134,8 @@ function initHero() {
 
   if (!hl1 || !hl2) return;
 
-  const start = new Date('2024-05-16T00:00:00');
-  const days  = Math.floor((new Date() - start) / 86400000);
+  const start = Date.UTC(2024, 4, 16); // May 16 2024 — UTC for cross-timezone consistency
+  const days  = Math.floor((Date.now() - start) / 86400000);
 
   gsap.set([hl1, hl2], { yPercent: 110, opacity: 1 });
   gsap.set([since, counter, hint], { opacity: 0 });
