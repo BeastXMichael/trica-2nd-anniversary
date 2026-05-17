@@ -182,6 +182,7 @@ function initScrollAnimations() {
   initWordReveals();
   initPhotoReveals();
   initProseReveals();
+  initKids3D();
   initJourney();
   initLetterReveal();
   initClosingPhoto();
@@ -348,6 +349,71 @@ function fireHeartsShower() {
       .to(div, { y: -(window.innerHeight + 90), duration: dur, ease: 'power1.out' }, 0)
       .to(div, { opacity: 0, duration: 1.4, ease: 'power1.in' }, dur - 1.5);
   }
+}
+
+/* ===================================================
+   KIDS 3D PARALLAX
+=================================================== */
+function initKids3D() {
+  const stage = document.getElementById('kids-stage');
+  if (!stage) return;
+
+  const cards = Array.from(stage.querySelectorAll('.doll-card'));
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile) {
+    // Mobile: simple staggered fade-in, no 3D transforms
+    gsap.to(cards, {
+      opacity: 1,
+      stagger: 0.12,
+      duration: 0.9,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '#kids', start: 'top 80%', toggleActions: 'play none none none' }
+    });
+    return;
+  }
+
+  // Set each card's Z depth in 3D space
+  cards.forEach(card => {
+    gsap.set(card, { z: parseFloat(card.dataset.depth) || 0 });
+  });
+
+  // Staggered entrance, then continuous float per card
+  cards.forEach((card, i) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 48 },
+      {
+        opacity: 1, y: 0,
+        duration: 1.2, ease: 'power2.out',
+        delay: i * 0.18,
+        onComplete() {
+          gsap.to(card, {
+            y: -10, yoyo: true, repeat: -1,
+            duration: 4 + i * 0.4,
+            ease: 'sine.inOut',
+            delay: i * 0.7
+          });
+        },
+        scrollTrigger: { trigger: '#kids', start: 'top 72%', toggleActions: 'play none none none' }
+      }
+    );
+  });
+
+  // Mouse-driven 3D tilt with lerp
+  let tRX = 0, tRY = 0, cRX = 0, cRY = 0;
+
+  stage.addEventListener('mousemove', e => {
+    const r = stage.getBoundingClientRect();
+    tRX = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -7;
+    tRY = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  9;
+  });
+  stage.addEventListener('mouseleave', () => { tRX = 0; tRY = 0; });
+
+  gsap.ticker.add(() => {
+    cRX += (tRX - cRX) * 0.08;
+    cRY += (tRY - cRY) * 0.08;
+    gsap.set(stage, { rotateX: cRX, rotateY: cRY, transformPerspective: 1200 });
+  });
 }
 
 /* ===================================================

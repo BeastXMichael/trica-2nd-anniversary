@@ -926,3 +926,63 @@ body.cursor-hover #cursor-ring {
 }
 
 @media (max-width: 768px) { .doodle { display: none; } }
+
+/* ===================================================
+   KIDS 3D STAGE
+=================================================== */
+#kids-stage {
+  position: relative;
+  max-width: 860px;
+  margin: 56px auto 0;
+  height: 310px;
+  transform-style: preserve-3d;
+}
+
+.doll-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transform-style: preserve-3d;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.doll-card svg {
+  filter: drop-shadow(0 14px 28px rgba(44,24,16,0.16));
+}
+
+.doll-label {
+  font-family: var(--font-letter);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  #kids-stage {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px 20px;
+    padding: 24px 16px;
+  }
+  .doll-card {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    opacity: 1;
+    width: calc(50% - 10px);
+    max-width: 120px;
+  }
+  .doll-card svg {
+    width: 100%;
+    height: auto;
+  }
+}
