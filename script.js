@@ -320,6 +320,32 @@ function initJourney() {
 }
 
 /* ===================================================
+   HEARTS SHOWER
+=================================================== */
+function fireHeartsShower() {
+  if (window._heartsFired) return;
+  window._heartsFired = true;
+
+  const HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22"><path fill="#D4A0B0" d="M12 20C12 20 1 13 1 6a5 5 0 0 1 11-1.5A5 5 0 0 1 23 6c0 7-11 14-11 14z"/></svg>`;
+
+  for (let i = 0; i < 10; i++) {
+    const div = document.createElement('div');
+    div.innerHTML = HEART;
+    const size = 14 + Math.random() * 14;
+    const dur  = 6  + Math.random() * 5;
+    const del  = Math.random() * 2.5;
+    div.style.cssText = `position:fixed;bottom:-40px;left:${5 + Math.random() * 90}%;`
+      + `width:${size}px;pointer-events:none;z-index:9999;`;
+    document.body.appendChild(div);
+
+    gsap.timeline({ delay: del, onComplete: () => div.remove() })
+      .fromTo(div, { opacity: 0 }, { opacity: 0.82, duration: 0.5, ease: 'power1.out' })
+      .to(div, { y: -(window.innerHeight + 90), duration: dur, ease: 'power1.out' }, 0)
+      .to(div, { opacity: 0, duration: 1.4, ease: 'power1.in' }, dur - 1.5);
+  }
+}
+
+/* ===================================================
    LETTER PARAGRAPH REVEALS
 =================================================== */
 function initLetterReveal() {
@@ -332,25 +358,40 @@ function initLetterReveal() {
       { opacity: 0, y: 35 },
       {
         opacity: 1, y: 0,
-        duration: 1.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: p,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
+        duration: 1.2, ease: 'power2.out',
+        scrollTrigger: { trigger: p, start: 'top 85%', toggleActions: 'play none none none' }
       }
     );
   });
 
-  /* Signature */
-  const sig = document.querySelector('.letter-signature');
-  if (sig) {
-    gsap.from(sig, {
-      opacity: 0, y: 24,
-      duration: 1.1, ease: 'power2.out',
-      scrollTrigger: { trigger: sig, start: 'top 88%', toggleActions: 'play none none none' }
+  const sig      = document.querySelector('.letter-signature');
+  if (!sig) return;
+  const sigClose = sig.querySelector('.sig-close');
+  const sigName  = sig.querySelector('.js-sig-reveal');
+
+  if (sigClose) {
+    gsap.from(sigClose, {
+      opacity: 0, y: 14,
+      duration: 0.9, ease: 'power2.out',
+      scrollTrigger: { trigger: sig, start: 'top 90%', toggleActions: 'play none none none' }
     });
+  }
+
+  if (sigName) {
+    gsap.fromTo(sigName,
+      { clipPath: 'inset(0 100% 0 0)' },
+      {
+        clipPath: 'inset(0 0% 0 0)',
+        duration: 2.2, ease: 'power2.inOut',
+        delay: 0.45,
+        scrollTrigger: {
+          trigger: sig,
+          start: 'top 90%',
+          toggleActions: 'play none none none',
+          onEnter: () => setTimeout(fireHeartsShower, 700)
+        }
+      }
+    );
   }
 }
 
@@ -358,18 +399,17 @@ function initLetterReveal() {
    CLOSING PHOTO
 =================================================== */
 function initClosingPhoto() {
-  const closing = document.querySelector('.closing-photo img');
-  if (!closing) return;
-  gsap.to(closing, {
-    scale: 1,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '#closing',
-      start: 'top 80%',
-      end: 'top top',
-      scrub: true
+  const img = document.querySelector('.closing-photo img');
+  if (!img) return;
+
+  gsap.fromTo(img,
+    { opacity: 0, scale: 1.08 },
+    {
+      opacity: 1, scale: 1,
+      duration: 2.2, ease: 'power2.out',
+      scrollTrigger: { trigger: '#closing', start: 'top 75%', toggleActions: 'play none none none' }
     }
-  });
+  );
 }
 
 /* ===================================================
