@@ -210,34 +210,35 @@ function initWordReveals() {
   });
 }
 
-/* Clip-path photo reveals */
+/* Clip-path photo reveals + polaroid frame entrance */
 function initPhotoReveals() {
   document.querySelectorAll('.photo-reveal').forEach(el => {
+    const wrapper = el.closest('.js-polaroid') || el;
+    const rot = wrapper !== el
+      ? (parseFloat(wrapper.style.getPropertyValue('--rot')) || 0)
+      : 0;
+    const trig = { trigger: wrapper, start: 'top 88%', toggleActions: 'play none none none' };
+
+    if (wrapper !== el) {
+      gsap.fromTo(wrapper,
+        { y: 52, rotation: rot + 8 },
+        { y: 0, rotation: rot, duration: 1.15, ease: 'expo.out', scrollTrigger: trig }
+      );
+    }
+
     gsap.to(el, {
       clipPath: 'inset(0% 0 0 0)',
       duration: 1.2,
+      delay: wrapper !== el ? 0.1 : 0,
       ease: 'expo.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      }
+      scrollTrigger: trig
     });
 
     const img = el.querySelector('img');
     if (img) {
       gsap.fromTo(img,
         { scale: 1.1 },
-        {
-          scale: 1,
-          duration: 1.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
+        { scale: 1, duration: 1.8, ease: 'power2.out', scrollTrigger: trig }
       );
     }
   });
