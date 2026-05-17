@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 2nd Anniversary, Sayang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor-ring"></div>
+  <div id="cursor-dot"></div>
+
+  <!-- Intro overlay -->
+  <div id="intro-overlay">
+    <div class="overlay-pulse"></div>
+    <p class="overlay-title">Happy 2nd Anniversary, Sayang</p>
+    <p class="overlay-sub">tap anywhere to begin</p>
+  </div>
+
+  <!-- Fixed Audio Bar -->
+  <header id="audio-bar">
+    <span id="song-title">Menarilah - NDC Worship</span>
+    <div class="audio-controls">
+      <button id="btn-mute" class="audio-btn" aria-label="Mute">
+        <svg id="icon-unmuted" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <svg id="icon-muted" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:none">
+          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+      </button>
+      <button id="btn-prev" class="audio-btn" aria-label="Previous track">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+        </svg>
+      </button>
+      <button id="btn-play" class="audio-btn audio-btn-play" aria-label="Play">
+        <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:none">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+      <button id="btn-next" class="audio-btn" aria-label="Next track">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18l8.5-6L6 6v12zm8.5-12v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="audio-right">
+      <span id="time-current">0:00</span>
+      <input type="range" id="audio-progress" min="0" max="100" value="0" aria-label="Seek">
+      <span id="time-total">0:00</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-since" id="hero-since">Since 16 Mei 2024</p>
+      <h1 class="hero-headline">
+        <span class="line-mask"><span class="hero-line" id="hl-1">Happy 2nd Anniversary,</span></span>
+        <span class="line-mask"><span class="hero-line hero-sayang" id="hl-2">Sayang</span></span>
+      </h1>
+      <div class="hero-counter" id="hero-counter">
+        <span id="day-count" class="counter-num">0</span>
+        <span class="counter-label">days of us</span>
+      </div>
+    </div>
+    <div class="scroll-hint" id="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- Section 2: How We Got Here -->
+  <section id="story" class="section">
+    <div class="section-inner story-inner">
+      <div class="story-text">
+        <p class="section-label">how we got here</p>
+        <h2 class="section-heading js-word-reveal">It started somewhere between October 2023 and us not realizing it.</h2>
+        <div class="prose js-fade-prose">
+          <p>We were both applying to be GLs that year, preparing for the GL performance, going to rehearsals. A mutual friend introduced us somewhere in that chaos. I thought you were very pretty. So I did what I do: I found reasons to be around you. More rehearsals. More time. More everything.</p>
+          <p>I confessed first, because I couldn't not. And then, on 16 Mei 2024, aku officially tembak kamu. You said yes. That was it. That's how we became kita.</p>
+        </div>
+      </div>
+      <div class="story-photos">
+        <div class="story-photo-1 photo-reveal">
+          <img src="Photos/2024/02. February/IMG_0328.jpeg" alt="early days" loading="lazy">
+        </div>
+        <div class="story-photo-2 photo-reveal">
+          <img src="Photos/2024/05. May/IMG_3725.jpeg" alt="16 Mei 2024" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: The Texture of Us -->
+  <section id="texture" class="section">
+    <div class="section-inner">
+      <div class="texture-block">
+        <div class="texture-photo photo-reveal">
+          <img src="Photos/2025/03. March/IMG_3062.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="texture-text">
+          <p class="section-label">the texture of us</p>
+          <h2 class="section-heading js-word-reveal">Ada sesuatu tentang kita yang aku suka banget.</h2>
+          <div class="prose js-fade-prose">
+            <p>Bukan yang besar-besar. The small things, the kind that don't make the highlight reel but would make anyone watching from the outside say, that's a happy couple.</p>
+            <p>Like how I'll come back inside and suddenly start screaming for no reason. Tickle you. Throw the guling across the room. You say: Michael, stop. Michael. Michael, stop. And I just keep going, because your reaction is the funniest thing in the world to me, until eventually you actually cry, and then it's sorry sorry sorry sorry sorry, and then we're fine. Tae.</p>
+          </div>
+        </div>
+      </div>
+      <div class="texture-block reverse">
+        <div class="texture-photo photo-reveal">
+          <img src="Photos/2025/08. August/IMG_5603.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="texture-text">
+          <div class="prose js-fade-prose">
+            <p>Or the way you tell stories about your papa and mama. Cara kamu cerita bikin semuanya jadi hidup. I could listen to you for hours. Or your birthday surprise for me, the one where you cooked me a burger from scratch. You didn't need to do that. You just did it, because that's who you are.</p>
+            <p>We study side by side. We scroll Instagram for too long and don't stop each other. We go to church and praise God for the same things. The small things are the big things, sayang. Gak kerasa, but those are the ones I'll remember.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Our Kids -->
+  <section id="kids" class="section">
+    <div class="kids-inner js-fade-prose">
+      <p class="section-label" style="text-align:center; margin-bottom:36px;">our kids</p>
+      <p class="kids-prose">
+        <span class="kids-dropcap">S</span>omewhere in the past two years we ended up with kids. Cino, the bear, technically belongs to both of us. Lata 2 always ends up on my side. Xiao Bao Bei is yours, you hold him every night. Boris the capybara doesn't really belong to anyone but always makes it into the frame anyway. We didn't plan any of them. We just ended up with a family, hehe.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 5: Journey -->
+  <section id="journey">
+    <div class="journey-pin-wrapper" id="journey-pin-wrapper">
+      <div class="journey-sticky">
+        <div class="journey-track" id="journey-track">
+
+          <div class="journey-slide">
+            <div class="journey-slide-photo">
+              <img src="Photos/2024/09. September/IMG_8564.jpeg" alt="" loading="lazy">
+            </div>
+            <div class="journey-slide-text">
+              <span class="journey-num">01 / 05</span>
+              <p class="journey-sentence">the river cruise where you got tired before we even started</p>
+            </div>
+          </div>
+
+          <div class="journey-slide">
+            <div class="journey-slide-photo">
+              <img src="Photos/2024/10. October/IMG_9014.jpeg" alt="" loading="lazy">
+            </div>
+            <div class="journey-slide-text">
+              <span class="journey-num">02 / 05</span>
+              <p class="journey-sentence">Universal twice, because you wanted one more ride</p>
+            </div>
+          </div>
+
+          <div class="journey-slide">
+            <div class="journey-slide-photo">
+              <img src="Photos/2024/06. June/IMG_6465.jpeg" alt="" loading="lazy">
+            </div>
+            <div class="journey-slide-text">
+              <span class="journey-num">03 / 05</span>
+              <p class="journey-sentence">Batam for real Indonesian food, like finally</p>
+            </div>
+          </div>
+
+          <div class="journey-slide">
+            <div class="journey-slide-photo">
+              <img src="Photos/2025/07. July/IMG_5237.jpeg" alt="" loading="lazy">
+            </div>
+            <div class="journey-slide-text">
+              <span class="journey-num">04 / 05</span>
+              <p class="journey-sentence">Lazarus and Sisters' Island by ferry, that wild one</p>
+            </div>
+          </div>
+
+          <div class="journey-slide">
+            <div class="journey-slide-photo">
+              <img src="Photos/2026/03. March/IMG_7996.jpeg" alt="" loading="lazy">
+            </div>
+            <div class="journey-slide-text">
+              <span class="journey-num">05 / 05</span>
+              <p class="journey-sentence">Hall 8 of NTU, where most of us actually happened</p>
+              <p class="journey-end-note">home base</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: What I Love About You -->
+  <section id="love" class="section">
+    <div class="section-inner love-inner">
+      <div class="love-text">
+        <p class="section-label">what i love about you</p>
+        <h2 class="section-heading js-word-reveal">Ada sesuatu yang aku suka dari kamu that I keep coming back to.</h2>
+        <div class="prose js-fade-prose">
+          <p>You don't have a second face. Kamu ya kamu, in front of anyone, in any room. Honest, straightforward, no performance, no act. I trust you completely because of that. There's nothing to second-guess.</p>
+          <p>And then there's how you take care of people. I don't know how you do it. You always seem to know what someone needs before they say it. Their mood, their energy, what kind of support they need right now. You take care of your friends like that. You take care of me like that. You make people feel seen, sayang, without even trying. Mau diliat dari manapun, that kind of heart is rare.</p>
+        </div>
+      </div>
+      <div class="love-photo photo-reveal">
+        <img src="Photos/2025/12. December/IMG_7013.jpeg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: The Faith Thread -->
+  <section id="faith" class="section">
+    <div class="faith-inner js-fade-prose">
+      <span class="faith-icon">&#9825;</span>
+      <p class="section-label" style="margin-bottom:32px;">the faith thread</p>
+      <div class="prose" style="max-width:580px; margin:0 auto; text-align:center;">
+        <p>Aku ga percaya ini semua kebetulan. Time and again, things have fallen into the right place at exactly the right moment, and we both know it wasn't coincidence. We've prayed through the hard ones and praised through the good ones. NDC, GMS, JPCC, Hillsong, Elevation, that one Praise session yang beda banget rasanya. We know Who's been carrying this thing. And I'm grateful we both know it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Right Now -->
+  <section id="right-now" class="section">
+    <div class="section-inner rightnow-inner">
+      <div class="rightnow-text">
+        <p class="section-label">right now</p>
+        <h2 class="section-heading js-word-reveal">Right now you're in Thailand and I'm here.</h2>
+        <div class="prose js-fade-prose">
+          <p>The first anniversary we're spending apart. Jujur, it's strange. I got used to you just being there when I got back from outside, and now that room is quieter than I expected. Aku harus recalibrate sedikit. Which is fine. It just made me realize how much of my daily rhythm is you.</p>
+          <p>Dua bulan. I'll see you in two months. Enjoy dulu di sana ya, sayang.</p>
+        </div>
+      </div>
+      <div class="rightnow-photo photo-reveal">
+        <img src="Photos/2026/05. May/IMG_9174.jpeg" alt="" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: The Letter -->
+  <section id="letter">
+    <div class="letter-inner">
+      <span class="letter-salutation">Dear Trisha,</span>
+      <div class="letter-body" id="letter-body">
+        <p>Thank you so much for being the best partner I could have ever asked for in these past two years. When we first met during the GL performance two and a half years ago, I could never have expected you to become such an important figure in my life. You have been one of my biggest supporters, one of my best friends, and one of the most caring people I've ever known. Terima kasih sayang, untuk semua yang sudah kamu lakukan untukku.</p>
+        <p>To be honest, without you, my life would not have been this colourful. I wouldn't feel this secure. I wouldn't be this happy. You have been my anchor. When I feel stressed, when I feel anxious, when I feel uncertain, when it feels like everything is doubting me, I know there is you to come back to. I know you will always be by my side, supporting me, giving me the push I need. Thank you for just being present in my life.</p>
+        <p>Two years, jujur, enggak kerasa sama sekali. It has flown by so fast. And now that you're not here, I really started to feel it. I've lost the presence of someone who was always there when I got back from outside. It feels so strange. I think I need to recalibrate to being alone again. This has only made me more appreciative of you, more grateful for everything you've done in the past two years.</p>
+        <p>I really enjoyed every single moment we spent together. It doesn't matter whether it was something small, like scrolling Instagram in our room, going to church and praising God together for everything He has given us and how He has guided us through hard times, or just studying side by side. Those small little things mattered the most.</p>
+        <p>And of course, the bigger memories too. We went to all the museums in Singapore. We did the river cruise. We went to Gardens by the Bay twice (don't ask me why, but twice). We watched Phantom of the Opera. We explored Changi Jewel. We went to River Wonders and watched Zootopia 2 together, such a good movie. We went to Batam to eat real Indonesian food. We even did island hopping to Lazarus Island and Sisters' Island by ferry, which was a wild one. We went to Universal Studios. Every single date was unforgettable. I really hope we can keep going on dates like these for many years to come. Semoga kamu enggak bosan sama aku ya, sayang.</p>
+        <p>I know we both have our own problems. But don't worry, aku akan push kamu terus ya, Beb. Aku enggak akan biarkan kamu males-males, tidur terus, no way. Sekarang kamu sudah kerja, kamu enggak boleh kayak gitu lagi, oke? Kamu harus fokus, kamu harus kerja lebih keras untuk masa depan kita, untuk anak-anak kita nanti. Semoga cepat dapat kerjaannya, good luck sayang. Jangan lupa minta tolong Tuhan terus dalam mencari pekerjaan. Tapi enjoy dulu di Thailand ya.</p>
+        <p>All in all, aku sangat bersyukur dengan kehadiranmu in the past two years. I'm so glad you've been by my side, and I cherish every memory we've made. At the same time, I'm really looking forward to what's next. Next year, the next two years, three years, four years. I really hope, first, that we can keep supporting each other no matter the circumstances. Full trust, full support, no half-ass anything. I want both of us to be able to truly rely on each other. And second, I hope we keep relying our relationship on God. He is the greatest, the kindest, and the one who created us all. He will be the one who guides us through this relationship.</p>
+        <p>Jadi, thank you so much, sayang. I love you. I love you so much. See you in about two months.</p>
+      </div>
+      <div class="letter-signature">
+        <span class="sig-close">Yours,</span>
+        <span class="sig-name">Michael</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: Final Image -->
+  <section id="closing">
+    <div class="closing-photo">
+      <img src="Photos/Closing Photo 1.jpg" alt="" loading="lazy">
+    </div>
+  </section>
+
+  <audio id="bg-audio" preload="none"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

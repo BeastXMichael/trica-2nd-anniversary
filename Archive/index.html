@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FDF6EE">
+  <title>Happy 2nd Anniversary, Sayang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato:wght@300;400;700&family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Audio Player Bar -->
+  <div id="audio-bar">
+    <div class="audio-song">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+      </svg>
+      <span id="song-title">Menarilah - NDC Worship</span>
+    </div>
+    <div class="audio-controls">
+      <button id="btn-prev" class="audio-btn" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+      </button>
+      <button id="btn-play" class="audio-btn" aria-label="Play">
+        <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <button id="btn-next" class="audio-btn" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+      </button>
+    </div>
+    <div class="audio-progress-wrap">
+      <span class="time-label" id="time-current">0:00</span>
+      <input type="range" id="audio-progress" min="0" max="100" value="0" step="0.1">
+      <span class="time-label" id="time-total">0:00</span>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-since">Since 16 May 2024</span>
+      <h1 class="hero-headline">Happy 2nd Anniversary, Sayang</h1>
+      <div class="hero-counter">
+        <span class="counter-number" id="day-count">730</span>
+        <span class="counter-label">days of us</span>
+      </div>
+    </div>
+    <div class="scroll-arrow">&#8595;</div>
+  </section>
+
+  <!-- Our Story -->
+  <section id="story" class="section">
+    <h2 class="section-heading">Our Story</h2>
+    <div class="gold-rule"></div>
+    <div class="story-grid">
+      <div class="story-block reveal">
+        <span class="date-stamp">Oktober 2023</span>
+        <h3>Bagaimana Kita Bertemu</h3>
+        <p>It started at Greet Day, NTU's orientation programme for Group Leaders, in October 2023. All of us were preparing the GL performance together. A mutual friend introduced us. From the moment I met you, I thought you were very pretty, and I kept finding ways to spend more time with you.</p>
+      </div>
+      <div class="story-v-divider"></div>
+      <div class="story-block reveal reveal-delay-1">
+        <span class="date-stamp">16 Mei 2024</span>
+        <h3>The Tembak</h3>
+        <p>I told you how I felt first, because I wanted you to know before anything else happened. Then, some time after, I asked you properly, the way we do it back home. You said yes on 16 Mei 2024. And that was the beginning of everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2024 Gallery -->
+  <div class="gallery-section">
+    <div class="year-label-wrap">
+      <div class="year-bg-label">2024</div>
+      <span class="year-fg-label">2024</span>
+    </div>
+    <div class="gallery-year-content" id="gallery-2024"></div>
+  </div>
+
+  <!-- Memory Moments -->
+  <section id="memories" class="section">
+    <h2 class="section-heading">Moments I Keep Coming Back To</h2>
+    <div class="gold-rule"></div>
+    <div class="memories-grid">
+      <div class="memory-card reveal">
+        <div class="memory-number">01</div>
+        <div class="memory-title">Michael, stop. Michael.</div>
+        <p class="memory-body">My favourite thing to do is get completely on your nerves. I come back from outside and suddenly start screaming for no reason. I tickle you. I throw the guling at you. I drop the bolster on the floor on purpose. I spill drinks. And you get more and more fed up: "Michael, stop. Michael. Michael, stop, Michael." I just keep going. Eventually you actually cry, and then I rush in with "sorry, sorry, sorry, sorry, sorry." Somehow this is our thing.</p>
+      </div>
+      <div class="memory-card reveal reveal-delay-1">
+        <div class="memory-number">02</div>
+        <div class="memory-title">Alive in the Telling</div>
+        <p class="memory-body">I love listening to you talk. The way you narrate stories, whether it's about your papa and mama, or something that happened with our mutual friends, makes everything feel alive. I could sit and listen to you all day.</p>
+      </div>
+      <div class="memory-card reveal reveal-delay-2">
+        <div class="memory-number">03</div>
+        <div class="memory-title">One Homemade Burger</div>
+        <p class="memory-body">The way you celebrate my birthday is something else. You cooked me a burger from scratch. The effort you put into making me feel special is something I will never take for granted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2025 Gallery -->
+  <div class="gallery-section">
+    <div class="year-label-wrap">
+      <div class="year-bg-label">2025</div>
+      <span class="year-fg-label">2025</span>
+    </div>
+    <div class="gallery-year-content" id="gallery-2025"></div>
+  </div>
+
+  <!-- What I Love + Language + Dolls -->
+  <section id="love-section" class="section">
+
+    <!-- What I Love -->
+    <h2 class="section-heading">What I Love About You</h2>
+    <div class="gold-rule"></div>
+    <div class="love-traits">
+      <div class="love-trait reveal">
+        <span class="trait-tag">Chillan</span>
+        <p>You don't have a second face. You are the same person in front of everyone: honest, genuine, no performance. That kind of realness is rare. I trust you completely because there is nothing performed about you.</p>
+      </div>
+      <div class="love-trait reveal reveal-delay-1">
+        <span class="trait-tag">Mommy energy</span>
+        <p>You are so deeply caring and aware of everyone around you. You always seem to know what people need before they even say it. You take care of your friends. You take care of me.</p>
+      </div>
+    </div>
+
+    <!-- Our Language -->
+    <div class="language-section">
+      <h2 class="section-heading">Our Language</h2>
+      <div class="gold-rule"></div>
+      <p class="language-label">What we call each other</p>
+      <div class="names-grid reveal">
+        <div class="name-pill">
+          <span class="name-word">babe</span>
+          <span class="name-from">Michael to Trisha</span>
+        </div>
+        <div class="name-pill">
+          <span class="name-word">sayang</span>
+          <span class="name-from">both of us</span>
+        </div>
+        <div class="name-pill">
+          <span class="name-word">Minchan</span>
+          <span class="name-from">Trisha to Michael</span>
+        </div>
+      </div>
+      <p class="language-label" style="margin-top:40px;">Our slang</p>
+      <div class="slang-grid reveal">
+        <div class="slang-card">
+          <div class="slang-word">Tae</div>
+          <div class="slang-def">Slang for poop. We say it constantly.</div>
+        </div>
+        <div class="slang-card">
+          <div class="slang-word">Brot</div>
+          <div class="slang-def">Friend, bro. We throw it at each other.</div>
+        </div>
+        <div class="slang-card">
+          <div class="slang-word">mbencekno</div>
+          <div class="slang-def">Very annoying. Picked up from Japanese slang.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Our Children (the dolls) -->
+    <div class="dolls-section">
+      <h2 class="section-heading">Our Children</h2>
+      <div class="gold-rule"></div>
+      <div class="dolls-grid">
+        <div class="doll-card reveal">
+          <div class="doll-emoji">&#128059;</div>
+          <div class="doll-name">Cino</div>
+          <div class="doll-type">Bear</div>
+          <p class="doll-desc">Our shared child. Equally loved by both of us.</p>
+        </div>
+        <div class="doll-card reveal reveal-delay-1">
+          <div class="doll-emoji">&#128055;</div>
+          <div class="doll-name">La Zi Zhu</div>
+          <div class="doll-type">Pink pig</div>
+          <p class="doll-desc">Michael's favourite.</p>
+        </div>
+        <div class="doll-card reveal reveal-delay-2">
+          <div class="doll-emoji">&#129528;</div>
+          <div class="doll-name">Xiao Bao Bei</div>
+          <div class="doll-type">&#23567;&#23453;&#36145; &middot; Teddy bear</div>
+          <p class="doll-desc">Trisha's favourite. Chinese for little treasure.</p>
+        </div>
+        <div class="doll-card reveal reveal-delay-3">
+          <div class="doll-emoji">&#129423;</div>
+          <div class="doll-name">Boris</div>
+          <div class="doll-type">Capybara</div>
+          <p class="doll-desc">The chillest member of the family.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 2026 Gallery -->
+  <div class="gallery-section">
+    <div class="year-label-wrap">
+      <div class="year-bg-label">2026</div>
+      <span class="year-fg-label">2026</span>
+    </div>
+    <div class="gallery-year-content" id="gallery-2026"></div>
+  </div>
+
+  <!-- Places + Music + Faith -->
+  <section id="places-section" class="section">
+
+    <!-- Places -->
+    <h2 class="section-heading">Where We've Been</h2>
+    <div class="gold-rule"></div>
+    <div class="places-layout">
+      <div>
+        <p class="places-col-label">Singapore</p>
+        <ul class="places-list">
+          <li>Gardens by the Bay (twice, jangan tanya kenapa)</li>
+          <li>Sentosa</li>
+          <li>Universal Studios Singapore</li>
+          <li>National Museum of Singapore</li>
+          <li>National Gallery Singapore</li>
+          <li>Asian Civilisations Museum</li>
+          <li>Lazarus Island and Sisters' Islands (island hopping by ferry, wild one)</li>
+          <li>Changi Jewel</li>
+          <li>Singapore River cruise</li>
+          <li>River Wonders</li>
+          <li>Phantom of the Opera</li>
+        </ul>
+        <div class="fav-spot">Our favourite spot of all: Hall 8, NTU. Where so much of our story actually happened.</div>
+      </div>
+      <div>
+        <p class="places-col-label">Beyond Singapore</p>
+        <ul class="places-list">
+          <li>Batam, Indonesia (for real Indonesian food)</li>
+        </ul>
+        <p class="places-col-label" style="margin-top:32px;">Movie</p>
+        <ul class="places-list">
+          <li>Zootopia 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Music -->
+    <div class="music-section">
+      <h2 class="section-heading">Music We Share</h2>
+      <div class="gold-rule"></div>
+      <div class="music-groups">
+        <div>
+          <p class="music-group-label">Indonesian Worship</p>
+          <ul class="music-list">
+            <li>NDC Worship</li>
+            <li>GMS Worship</li>
+            <li>JPCC Worship</li>
+          </ul>
+        </div>
+        <div>
+          <p class="music-group-label">Western Worship</p>
+          <ul class="music-list">
+            <li>Hillsong</li>
+            <li class="music-special">Elevation Worship, especially &ldquo;Praise&rdquo;</li>
+          </ul>
+        </div>
+      </div>
+      <p class="music-note">Some of these are playing right now.</p>
+    </div>
+
+    <!-- Faith -->
+    <div class="faith-section reveal">
+      <h2 class="section-heading">Faith</h2>
+      <div class="gold-rule"></div>
+      <p>Our faith in God is at the centre of everything we share. When we face hard things, we pray. We trust Him fully. Time and time again we have watched things fall into the right place at exactly the right moment, and we know it is not coincidence. The miracles in this relationship are His doing. We worship together, we pray together, and we keep coming back to Him.</p>
+    </div>
+
+  </section>
+
+  <!-- Closing Letter -->
+  <section id="letter">
+    <div class="letter-inner reveal">
+      <span class="letter-label">A letter for you</span>
+      <h2 class="letter-heading">Dear Trisha,</h2>
+      <div class="letter-rule"></div>
+      <div class="letter-body">
+        <p>Thank you so much for being the best partner I could have ever asked for in these past two years. When we first met during the GL performance two and a half years ago, I could never have expected you to become such an important figure in my life. You have been one of my biggest supporters, one of my best friends, and one of the most caring people I've ever known. Terima kasih sayang, untuk semua yang sudah kamu lakukan untukku.</p>
+        <p>To be honest, without you, my life would not have been this colourful. I wouldn't feel this secure. I wouldn't be this happy. You have been my anchor. When I feel stressed, when I feel anxious, when I feel uncertain, when it feels like everything is doubting me, I know there is you to come back to. I know you will always be by my side, supporting me, giving me the push I need. Thank you for just being present in my life.</p>
+        <p>Two years, jujur, enggak kerasa sama sekali. It has flown by so fast. And now that you're not here, I really started to feel it. I've lost the presence of someone who was always there when I got back from outside. It feels so strange. I think I need to recalibrate to being alone again. This has only made me more appreciative of you, more grateful for everything you've done in the past two years.</p>
+        <p>I really enjoyed every single moment we spent together. It doesn't matter whether it was something small, like scrolling Instagram in our room, going to church and praising God together for everything He has given us and how He has guided us through hard times, or just studying side by side. Those small little things mattered the most.</p>
+        <p>And of course, the bigger memories too. We went to all the museums in Singapore. We did the river cruise. We went to Gardens by the Bay twice (don't ask me why, but twice). We watched Phantom of the Opera. We explored Changi Jewel. We went to River Wonders and watched Zootopia 2 together, such a good movie. We went to Batam to eat real Indonesian food. We even did island hopping to Lazarus Island and Sisters' Island by ferry, which was a wild one. We went to Universal Studios. Every single date was unforgettable. I really hope we can keep going on dates like these for many years to come. Semoga kamu enggak bosan sama aku ya, sayang.</p>
+        <p>I know we both have our own problems. But don't worry, aku akan push kamu terus ya, Beb. Aku enggak akan biarkan kamu males-males, tidur terus, no way. Sekarang kamu sudah kerja, kamu enggak boleh kayak gitu lagi, oke? Kamu harus fokus, kamu harus kerja lebih keras untuk masa depan kita, untuk anak-anak kita nanti. Semoga cepat dapat kerjaannya, good luck sayang. Jangan lupa minta tolong Tuhan terus dalam mencari pekerjaan. Tapi enjoy dulu di Thailand ya.</p>
+        <p>All in all, aku sangat bersyukur dengan kehadiranmu in the past two years. I'm so glad you've been by my side, and I cherish every memory we've made. At the same time, I'm really looking forward to what's next. Next year, the next two years, three years, four years. I really hope, first, that we can keep supporting each other no matter the circumstances. Full trust, full support, no half-ass anything. I want both of us to be able to truly rely on each other. And second, I hope we keep relying our relationship on God. He is the greatest, the kindest, and the one who created us all. He will be the one who guides us through this relationship.</p>
+        <p>Jadi, thank you so much, sayang. I love you. I love you so much. See you in about two months.</p>
+      </div>
+      <div class="letter-sign">
+        <p class="closing-word">Yours,</p>
+        <p class="sig-name">Michael</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing Photos (final element) -->
+  <section id="closing-photos">
+    <div class="closing-photos-grid">
+      <div class="closing-photo-item">
+        <img src="Photos/Closing Photo 1.jpg" alt="">
+      </div>
+      <div class="closing-photo-item">
+        <img src="Photos/Closing photo 2.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <button id="lb-close">&#215;</button>
+    <button id="lb-prev" class="lb-btn">&#8249;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button id="lb-next" class="lb-btn">&#8250;</button>
+    <div id="lb-counter"></div>
+  </div>
+
+  <audio id="bg-audio"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

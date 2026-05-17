@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+.next/
+out/
+.DS_Store
+
+*.mov
+*.mp4
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+.env
+.env.local
