@@ -17,6 +17,13 @@
   --dark:           #1C2B3A;
   --divider:        rgba(139, 173, 196, 0.25);
 
+  /* Gold accent layer */
+  --cream:      #FBF5EC;
+  --gold:       #C9A86A;
+  --gold-light: rgba(201,168,106,0.25);
+  --wine:       #6B2B2F;
+  --blush:      #F2DCDB;
+
   --font-display: 'Fraunces', Georgia, serif;
   --font-sub:     'DM Serif Display', Georgia, serif;
   --font-body:    'Jost', 'Helvetica Neue', sans-serif;
@@ -37,7 +44,8 @@ body {
   font-size: 17px;
   line-height: 1.8;
   color: var(--text);
-  background-color: var(--white);
+  background-color: var(--cream);
+  animation: bg-breathe 10s ease-in-out infinite;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: none;
@@ -374,6 +382,11 @@ body.cursor-hover #cursor-ring {
   100% { top: 100%; opacity: 0; }
 }
 
+@keyframes bg-breathe {
+  0%, 100% { background-color: var(--cream); }
+  50%       { background-color: var(--pink-light); }
+}
+
 /* ===================================================
    SECTION BASE
 =================================================== */
@@ -421,6 +434,12 @@ body.cursor-hover #cursor-ring {
 }
 
 .prose p + p { margin-top: 1.6em; }
+
+.gold-line {
+  font-style: normal;
+  background: linear-gradient(transparent 62%, var(--gold-light) 62%);
+  padding-bottom: 1px;
+}
 
 /* ===================================================
    PHOTO REVEAL
@@ -472,7 +491,7 @@ body.cursor-hover #cursor-ring {
 /* ===================================================
    SECTION 3 — TEXTURE
 =================================================== */
-#texture { background: var(--white); }
+#texture { background: transparent; }
 
 .texture-block {
   display: grid;
@@ -497,6 +516,7 @@ body.cursor-hover #cursor-ring {
 #kids {
   background: var(--blue-light);
   text-align: center;
+  position: relative;
 }
 
 .kids-inner {
@@ -630,7 +650,7 @@ body.cursor-hover #cursor-ring {
 /* ===================================================
    SECTION 6 — LOVE
 =================================================== */
-#love { background: var(--white); }
+#love { background: var(--blush); }
 
 .love-inner {
   display: grid;
@@ -672,7 +692,11 @@ body.cursor-hover #cursor-ring {
 /* ===================================================
    SECTION 8 — RIGHT NOW
 =================================================== */
-#right-now { background: var(--pink-light); }
+#right-now { background: var(--wine); }
+
+#right-now .section-heading { color: var(--cream); }
+#right-now .section-label   { color: rgba(251,245,236,0.5); }
+#right-now .prose           { color: rgba(251,245,236,0.82); }
 
 .rightnow-inner {
   display: grid;
@@ -688,8 +712,9 @@ body.cursor-hover #cursor-ring {
    SECTION 9 — LETTER
 =================================================== */
 #letter {
-  background: var(--white);
+  background: transparent;
   padding: 140px 0 160px;
+  position: relative;
 }
 
 .letter-inner {
@@ -736,7 +761,7 @@ body.cursor-hover #cursor-ring {
 .letter-signature .sig-name {
   font-family: var(--font-script);
   font-size: clamp(2.4rem, 5vw, 4rem);
-  color: var(--blue);
+  color: var(--gold);
   display: block;
   line-height: 1;
 }
@@ -831,3 +856,36 @@ body.cursor-hover #cursor-ring {
   .hero-headline { font-size: 2.3rem; }
   .counter-num { font-size: 3.5rem; }
 }
+
+/* ===================================================
+   SECTION DIVIDERS
+=================================================== */
+.section-divider {
+  width: 100%;
+  overflow: visible;
+  line-height: 0;
+  text-align: center;
+}
+.section-divider svg { display: block; width: 100%; height: 32px; }
+
+/* ===================================================
+   DOODLES
+=================================================== */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.38;
+  animation: doodle-float var(--dur, 6s) ease-in-out infinite;
+  z-index: 3;
+}
+
+.doodle--heart { --dur: 7s; }
+.doodle--sparkle { --dur: 5s; animation-delay: -2s; }
+.doodle--swirl { --dur: 8s; animation-delay: -4s; }
+
+@keyframes doodle-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-9px) rotate(5deg); }
+}
+
+@media (max-width: 768px) { .doodle { display: none; } }

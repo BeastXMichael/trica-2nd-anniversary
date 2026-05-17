@@ -403,30 +403,4 @@ function initClosingPhoto() {
   });
 })();
 
-/* ===================================================
-   SECTION BACKGROUND TRANSITIONS
-=================================================== */
-(function initBgTransitions() {
-  const map = [
-    { id: '#story',     bg: '#FBF2F5' },
-    { id: '#texture',   bg: '#FFFFFF' },
-    { id: '#kids',      bg: '#EEF4F8' },
-    { id: '#love',      bg: '#FFFFFF' },
-    { id: '#faith',     bg: '#F3F1F7' },
-    { id: '#right-now', bg: '#FBF2F5' },
-    { id: '#letter',    bg: '#FFFFFF' },
-    { id: '#closing',   bg: '#000000' },
-  ];
-
-  map.forEach(({ id, bg }) => {
-    const el = document.querySelector(id);
-    if (!el) return;
-    ScrollTrigger.create({
-      trigger: el,
-      start: 'top 55%',
-      end: 'bottom 55%',
-      onEnter:      () => gsap.to(document.body, { backgroundColor: bg, duration: 0.7, ease: 'power1.out' }),
-      onEnterBack:  () => gsap.to(document.body, { backgroundColor: bg, duration: 0.7, ease: 'power1.out' }),
-    });
-  });
-})();
+/* Section backgrounds handled by CSS (body bg-breathe animation + per-section CSS) */
