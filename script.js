@@ -221,8 +221,13 @@ function initPhotoReveals() {
 
     if (wrapper !== el) {
       gsap.fromTo(wrapper,
-        { y: 52, rotation: rot + 8 },
-        { y: 0, rotation: rot, duration: 1.15, ease: 'expo.out', scrollTrigger: trig }
+        { y: 52, rotation: rot + 8, opacity: 0 },
+        {
+          y: 0, rotation: rot, opacity: 1,
+          duration: 1.15, ease: 'expo.out',
+          onComplete: () => gsap.set(wrapper, { clearProps: 'transform,opacity' }),
+          scrollTrigger: trig
+        }
       );
     }
 
@@ -326,7 +331,7 @@ function fireHeartsShower() {
   if (window._heartsFired) return;
   window._heartsFired = true;
 
-  const HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22"><path fill="#D4A0B0" d="M12 20C12 20 1 13 1 6a5 5 0 0 1 11-1.5A5 5 0 0 1 23 6c0 7-11 14-11 14z"/></svg>`;
+  const HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#D4A0B0" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 z"/></svg>`;
 
   for (let i = 0; i < 10; i++) {
     const div = document.createElement('div');

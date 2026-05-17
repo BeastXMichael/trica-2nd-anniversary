@@ -892,6 +892,8 @@ body.cursor-hover #cursor-ring {
 .polaroid-offset-left  { margin-left: 40px; }
 .polaroid-offset-right { margin-right: 40px; }
 
+.js-sig-reveal { display: inline-block; }
+
 /* ===================================================
    SECTION DIVIDERS
 =================================================== */
