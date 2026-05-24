@@ -11,6 +11,8 @@
 </head>
 <body>
 
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
   <!-- Custom cursor -->
   <div id="cursor-ring"></div>
   <div id="cursor-dot"></div>
@@ -93,7 +95,7 @@
         <p class="section-label">Reminiscing the old days</p>
         <h2 class="section-heading js-word-reveal">Say hi! To the relationship born on October 2023</h2>
         <div class="prose js-fade-prose">
-          <p>Halo mamaw! Welcome toooo... Misha Blog Page Yeyy!!!!! Semoga by this time km uda balek dari Thailand dan istirahat tidur ngok ngok wkwkwk. Ga kerasa ya beb uda <em class="gold-line">2 tahun</em> kita uda bareng. Im very very very happy kita bisa bertahan selama ini dan semuanya lumayan mulus jujur. Ga nyangka kita bisa secocok ini pas pertama kali ketemu sama km pertama kali.</p>
+          <p>Halo mamaw! Welcome toooo... Misha Blog Page Yeyy!!!!! Semoga by this time km uda balek dari Thailand dan istirahat tidur ngok ngok wkwkwk. Ga kerasa ya beb uda <em class="gold-line">2 tahun</em> kita uda bareng. I'm very very very happy kita bisa bertahan selama ini dan semuanya lumayan mulus jujur. Ga nyangka kita bisa secocok ini pas pertama kali ketemu sama km pertama kali.</p>
           <p>Coba liat aja de 2 foto di sebelah ini. Dari jaman kapan coba itu beb beb. Kita masih banyak jaim jaim an nya, masi banyak manja manja nya. Tapi kalau dipikir pikir lagi, kita <em class="gold-line">ga berubah banyak</em> ya, malah menurut aku sekarang kita jauh lebih dekat lagi yey! Liat itu kita masih jauh lebih kurus brot, and itu kenapa lagi km nangis beb beb. Dari dulu sampe sekarang kita masi gitu aja wkwkwk</p>
         </div>
       </div>
@@ -101,18 +103,28 @@
         <div class="js-polaroid polaroid-offset-left" style="--rot: 2deg">
           <div class="polaroid__tape"></div>
           <div class="story-photo-1 photo-reveal">
-            <img src="Photos/2024/03. March/IMG_3057.jpeg" alt="early days" loading="lazy">
+            <picture><source srcset="Photos_optimized/2024/03. March/IMG_3057.webp" type="image/webp"><img src="Photos_optimized/2024/03. March/IMG_3057.jpg" alt="early days" loading="lazy"></picture>
           </div>
           <span class="photo-caption">March 2024</span>
         </div>
         <div class="js-polaroid polaroid-offset-right" style="--rot: -1.5deg">
           <div class="polaroid__tape"></div>
           <div class="story-photo-2 photo-reveal">
-            <img src="Photos/2024/04. April/IMG_2746.jpeg" alt="16 Mei 2024" loading="lazy">
+            <picture><source srcset="Photos_optimized/2024/04. April/IMG_2746.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_2746.jpg" alt="16 Mei 2024" loading="lazy"></picture>
           </div>
           <span class="photo-caption">April 2024</span>
         </div>
       </div>
+    </div>
+    <div class="doodle doodle--sparkle" aria-hidden="true" style="left:5%; top:22%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M12,1 L13.2,10.2 L22,12 L13.2,13.8 L12,23 L10.8,13.8 L2,12 L10.8,10.2 Z" fill="none" stroke="#D4A0B0" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="doodle doodle--heart" aria-hidden="true" style="right:5%; bottom:28%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22" width="20" height="18">
+        <path d="M12,6 C12,3 9,0 6,3 C3,0 0,3 0,6 C0,9 6,14.5 12,18 C18,14.5 24,9 24,6 C24,3 21,0 18,3 C15,0 12,3 12,6Z" fill="#D4A0B0" opacity="0.5"/>
+      </svg>
     </div>
   </section>
 
@@ -129,7 +141,7 @@
         <div class="js-polaroid" style="--rot: 1.5deg">
           <div class="polaroid__tape"></div>
           <div class="texture-photo photo-reveal">
-            <img src="Photos/2024/05. May/IMG_5007.jpeg" alt="" loading="lazy">
+            <picture><source srcset="Photos_optimized/2024/05. May/IMG_5007.webp" type="image/webp"><img src="Photos_optimized/2024/05. May/IMG_5007.jpg" alt="" loading="lazy"></picture>
           </div>
           <span class="photo-caption">May 2024</span>
         </div>
@@ -137,8 +149,8 @@
           <p class="section-label">Thank God we started this</p>
           <h2 class="section-heading js-word-reveal">How grateful I am to have you</h2>
           <div class="prose js-fade-prose">
-            <p>I know I have said this before but I will say this again, again, and again. I am grateful that we ended up together. I am grateful that you are the one who became one of the most important person in my world. I am grateful that you are the one who accompany me through many hardships and difficulties. I am thankful to God that for letting me have this chance on embarking a journey full of color into my life with you.</p>
-            <p>I cannot imagine a life where Vincent didn't spill the tea out to you, where you did not response well and asked me to go for a date together, where I did not take the chance to confess to you. Everything would be so so super different. And I am grateful once again that this is the life both me and you chose to live together. </p>
+            <p>I know I have said this before but I will say this again, again, and again. I am grateful that we ended up together. I am grateful that you are the one who became one of the most important people in my world. I am grateful that you are the one who accompanies me through many hardships and difficulties. I am thankful to God for letting me have this chance of embarking on a journey full of color into my life with you.</p>
+            <p>I cannot imagine a life where Vincent didn't spill the tea out to you, where you did not respond well and asked me to go for a date together, where I did not take the chance to confess to you. Everything would be so so super different. And I am grateful once again that this is the life both of us chose to live together. </p>
           </div>
         </div>
       </div>
@@ -146,17 +158,22 @@
         <div class="js-polaroid" style="--rot: -2deg">
           <div class="polaroid__tape"></div>
           <div class="texture-photo photo-reveal">
-            <img src="Photos/2024/10. October/IMG_8974.jpeg" alt="" loading="lazy">
+            <picture><source srcset="Photos_optimized/2024/10. October/IMG_8974.webp" type="image/webp"><img src="Photos_optimized/2024/10. October/IMG_8974.jpg" alt="" loading="lazy"></picture>
           </div>
           <span class="photo-caption">October 2024</span>
         </div>
         <div class="texture-text">
           <div class="prose js-fade-prose">
             <p>Look! My first ever botol minum from you! WKWKWKWK. To be honest beb, this is just one of the many many many events you have brought to my life. Thank you for always taking care of me, be very understanding, always be considerate, and be the best supporter I could have ever asked. With you I felt understood, I felt safe, I felt like I can be myself. And as I said to you before, this is something that I could not do with anyone else.</p>
-            <p>And why is that? To be honest I am not so sure myself. There is just something within you that feel reassuring and comforting. Maybe it's just... Trisha being Trisha. But that's exactly why I adore you so much.</p>
+            <p>And why is that? To be honest I am not so sure myself. There is just something within you that feels reassuring and comforting. Maybe it's just... Trisha being Trisha. But that's exactly why I adore you so much.</p>
           </div>
         </div>
       </div>
+    </div>
+    <div class="doodle doodle--sparkle" aria-hidden="true" style="right:6%; bottom:32%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" width="20" height="20">
+        <path d="M13,1 L14.2,11 L24,13 L14.2,15 L13,25 L11.8,15 L2,13 L11.8,11 Z" fill="none" stroke="#8BADC4" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
     </div>
   </section>
 
@@ -166,124 +183,43 @@
     </svg>
   </div>
 
-  <!-- Section 4: Our Kids -->
-  <section id="kids" class="section">
-    <div class="doodle doodle--sparkle" aria-hidden="true" style="right:44px; top:40px;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="26" height="26">
-        <path d="M14,0 L15.7,11.3 L28,14 L15.7,16.7 L14,28 L12.3,16.7 L0,14 L12.3,11.3 Z" fill="#C9A86A"/>
+  <!-- My Favorite Time with You -->
+  <section id="favorite" class="section">
+    <div class="section-inner favorite-inner">
+      <div class="js-polaroid favorite-polaroid" style="--rot: 1.5deg">
+        <div class="polaroid__tape"></div>
+        <div class="favorite-photo photo-reveal">
+          <picture><source srcset="Photos_optimized/2024/09. September/IMG_8597.webp" type="image/webp"><img src="Photos_optimized/2024/09. September/IMG_8597.jpg" alt="" loading="lazy"></picture>
+        </div>
+        <span class="photo-caption">September 2025</span>
+      </div>
+      <div class="favorite-text">
+        <p class="section-label">Favorite Time</p>
+        <h2 class="section-heading js-word-reveal">I MISS THESE TIMES MAMAWWW</h2>
+        <div class="prose js-fade-prose">
+          <p>Aku lumayan yakin date date yang kita lakuin itu ashoy ashoy beb wkwkwk. Selalu fun selalu seru, meskipun encok bangun pagi ya anjer. Semua SG keknya uda kita habisin de dalam 2 tahun doang ngawor. I love all the moments we spend together.</p>
+          <p>Tapi yang ga kalah seru itu yaa kegitatan aneh aneh yang ga terduga juga. Kek dibikinin burger sama km, nyanyi lagu rohani malem malem, cuddle seharian ga ngapa ngapain wkwkw, pesen McD jam 4 pagi shibal, and banyak banget. Moga moga kita tetep bisa nglakuin hal hal bodoh ini lagi di masa depan.</p>
+          <p>Well, here are some of the best photos in our 2 years! BEHOLD!</p>
+        </div>
+      </div>
+    </div>
+    <div class="doodle doodle--sparkle" aria-hidden="true" style="right:8%; top:20%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="24" height="24">
+        <path d="M14,1 L15.3,11.5 L26,14 L15.3,16.5 L14,27 L12.7,16.5 L2,14 L12.7,11.5 Z" fill="none" stroke="#C9A86A" stroke-width="1.5" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div class="kids-inner js-fade-prose">
-      <p class="section-label" style="text-align:center; margin-bottom:36px;">our kids</p>
-      <p class="kids-prose">
-        <span class="kids-dropcap">S</span>omewhere in the past two years we ended up with kids. Cino, the bear, technically belongs to both of us. Lata 2 always ends up on my side. Xiao Bao Bei is yours, you hold him every night. Boris the capybara doesn't really belong to anyone but always makes it into the frame anyway. We didn't plan any of them. We just ended up with a family, hehe.
-      </p>
-    </div>
-
-    <!-- 3D parallax doll stage -->
-    <div id="kids-stage" aria-hidden="true">
-
-      <!-- Cino — brown bear, background depth -->
-      <div class="doll-card" data-depth="0" style="left:2%;top:48px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 130" width="110" height="130">
-          <circle cx="27" cy="24" r="16" fill="#9E7050"/>
-          <circle cx="27" cy="24" r="8"  fill="#C49A68"/>
-          <circle cx="83" cy="24" r="16" fill="#9E7050"/>
-          <circle cx="83" cy="24" r="8"  fill="#C49A68"/>
-          <circle cx="55" cy="55" r="32" fill="#9E7050"/>
-          <ellipse cx="55" cy="67" rx="16" ry="12" fill="#C49A68"/>
-          <circle cx="43" cy="50" r="5.5" fill="#1C0E08"/>
-          <circle cx="67" cy="50" r="5.5" fill="#1C0E08"/>
-          <circle cx="41" cy="48" r="2"   fill="white"/>
-          <circle cx="65" cy="48" r="2"   fill="white"/>
-          <ellipse cx="55" cy="62" rx="5" ry="4" fill="#1C0E08"/>
-          <path d="M49,68 Q55,74 61,68" stroke="#1C0E08" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <ellipse cx="55" cy="104" rx="33" ry="24" fill="#9E7050"/>
-          <ellipse cx="55" cy="108" rx="20" ry="16" fill="#C49A68"/>
-          <ellipse cx="23" cy="100" rx="11" ry="20" fill="#9E7050" transform="rotate(-18 23 100)"/>
-          <ellipse cx="87" cy="100" rx="11" ry="20" fill="#9E7050" transform="rotate(18 87 100)"/>
-          <ellipse cx="40" cy="124" rx="15" ry="9"  fill="#9E7050"/>
-          <ellipse cx="70" cy="124" rx="15" ry="9"  fill="#9E7050"/>
-        </svg>
-        <span class="doll-label">Cino</span>
-      </div>
-
-      <!-- La Zi Zhu — pink pig, mid-front -->
-      <div class="doll-card" data-depth="80" style="left:25%;top:10px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 138" width="110" height="132">
-          <ellipse cx="28" cy="26" rx="15" ry="22" fill="#E898AA" transform="rotate(-20 28 26)"/>
-          <ellipse cx="87" cy="26" rx="15" ry="22" fill="#E898AA" transform="rotate(20 87 26)"/>
-          <circle cx="57" cy="60" r="36" fill="#F0AABC"/>
-          <ellipse cx="57" cy="113" rx="40" ry="28" fill="#F0AABC"/>
-          <ellipse cx="57" cy="117" rx="25" ry="20" fill="#FAD0DC"/>
-          <ellipse cx="57" cy="74" rx="21" ry="16" fill="#E898AA"/>
-          <ellipse cx="49" cy="74" rx="6.5" ry="5.5" fill="#C47090"/>
-          <ellipse cx="65" cy="74" rx="6.5" ry="5.5" fill="#C47090"/>
-          <circle cx="42" cy="57" r="7"   fill="#1C0E08"/>
-          <circle cx="72" cy="57" r="7"   fill="#1C0E08"/>
-          <circle cx="40" cy="54" r="3"   fill="white"/>
-          <circle cx="70" cy="54" r="3"   fill="white"/>
-          <path d="M46,33 Q57,40 68,33 Q57,26 46,33Z" fill="#D4A0B0"/>
-          <circle cx="57" cy="33" r="5" fill="#D4A0B0"/>
-          <ellipse cx="20" cy="112" rx="12" ry="24" fill="#F0AABC" transform="rotate(-15 20 112)"/>
-          <ellipse cx="94" cy="112" rx="12" ry="24" fill="#F0AABC" transform="rotate(15 94 112)"/>
-          <ellipse cx="40" cy="135" rx="17" ry="10" fill="#F0AABC"/>
-          <ellipse cx="74" cy="135" rx="17" ry="10" fill="#F0AABC"/>
-        </svg>
-        <span class="doll-label">La Zi Zhu</span>
-      </div>
-
-      <!-- Xiao Bao Bei — cream bear, frontmost -->
-      <div class="doll-card" data-depth="120" style="left:54%;top:8px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 130" width="110" height="130">
-          <circle cx="27" cy="24" r="16" fill="#EAD8C0"/>
-          <circle cx="27" cy="24" r="8"  fill="#F8EFE4"/>
-          <circle cx="83" cy="24" r="16" fill="#EAD8C0"/>
-          <circle cx="83" cy="24" r="8"  fill="#F8EFE4"/>
-          <circle cx="55" cy="55" r="32" fill="#EAD8C0"/>
-          <ellipse cx="55" cy="67" rx="16" ry="12" fill="#F8EFE4"/>
-          <circle cx="43" cy="50" r="6"   fill="#1C0E08"/>
-          <circle cx="67" cy="50" r="6"   fill="#1C0E08"/>
-          <circle cx="41" cy="47" r="2.5" fill="white"/>
-          <circle cx="65" cy="47" r="2.5" fill="white"/>
-          <ellipse cx="55" cy="62" rx="5" ry="4" fill="#D4A0B0"/>
-          <path d="M49,68 Q55,74 61,68" stroke="#D4A0B0" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M42,84 Q55,90 68,84 Q55,78 42,84Z" fill="#8BADC4" opacity="0.85"/>
-          <circle cx="55" cy="84" r="4" fill="#8BADC4"/>
-          <ellipse cx="55" cy="104" rx="33" ry="24" fill="#EAD8C0"/>
-          <ellipse cx="55" cy="108" rx="20" ry="16" fill="#F8EFE4"/>
-          <ellipse cx="23" cy="100" rx="11" ry="20" fill="#EAD8C0" transform="rotate(-18 23 100)"/>
-          <ellipse cx="87" cy="100" rx="11" ry="20" fill="#EAD8C0" transform="rotate(18 87 100)"/>
-          <ellipse cx="40" cy="124" rx="15" ry="9"  fill="#EAD8C0"/>
-          <ellipse cx="70" cy="124" rx="15" ry="9"  fill="#EAD8C0"/>
-        </svg>
-        <span class="doll-label">Xiao Bao Bei</span>
-      </div>
-
-      <!-- Boris — capybara, mid depth -->
-      <div class="doll-card" data-depth="40" style="left:73%;top:36px;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 120" width="120" height="111">
-          <ellipse cx="65" cy="90" rx="50" ry="28" fill="#7A6245"/>
-          <rect x="20" y="28" width="90" height="56" rx="22" fill="#7A6245"/>
-          <circle cx="32" cy="30" r="11" fill="#7A6245"/>
-          <circle cx="32" cy="30" r="5.5" fill="#9C8060"/>
-          <circle cx="98" cy="30" r="11" fill="#7A6245"/>
-          <circle cx="98" cy="30" r="5.5" fill="#9C8060"/>
-          <rect x="28" y="63" width="74" height="22" rx="11" fill="#9C8060"/>
-          <circle cx="50" cy="72" r="5.5" fill="#4A3828"/>
-          <circle cx="80" cy="72" r="5.5" fill="#4A3828"/>
-          <circle cx="44" cy="52" r="6" fill="#1C0E08"/>
-          <circle cx="86" cy="52" r="6" fill="#1C0E08"/>
-          <circle cx="42" cy="50" r="2.5" fill="white"/>
-          <circle cx="84" cy="50" r="2.5" fill="white"/>
-          <ellipse cx="35" cy="112" rx="16" ry="9"  fill="#7A6245"/>
-          <ellipse cx="95" cy="112" rx="16" ry="9"  fill="#7A6245"/>
-        </svg>
-        <span class="doll-label">Boris</span>
-      </div>
-
+    <div class="doodle doodle--heart" aria-hidden="true" style="left:5%; bottom:22%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 26" width="24" height="22">
+        <path d="M14,7 C14,3.5 10.5,0 7,3.5 C3.5,0 0,3.5 0,7 C0,11 7,17 14,22 C21,17 28,11 28,7 C28,3.5 24.5,0 21,3.5 C17.5,0 14,3.5 14,7Z" fill="#D4A0B0" opacity="0.45"/>
+      </svg>
     </div>
   </section>
+
+  <div class="section-divider" aria-hidden="true">
+    <svg viewBox="0 0 900 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,14 C70,4 190,22 450,14 C710,4 830,22 900,14" fill="none" stroke="#C9A86A" stroke-width="1.5" opacity="0.48"/>
+    </svg>
+  </div>
 
   <!-- Section 5: Journey -->
   <section id="journey">
@@ -293,57 +229,56 @@
 
           <div class="journey-slide">
             <div class="journey-slide-photo">
-              <img src="Photos/2024/09. September/IMG_8564.jpeg" alt="" loading="lazy">
+              <picture><source srcset="Photos_optimized/2024/11. November/IMG_9410.webp" type="image/webp"><img src="Photos_optimized/2024/11. November/IMG_9410.jpg" alt="" loading="lazy"></picture>
             </div>
             <div class="journey-slide-text">
               <span class="journey-num">01 / 05</span>
-              <p class="journey-sentence">the river cruise where you got tired before we even started</p>
-              <span class="journey-date">September 2024</span>
+              <p class="journey-sentence">Jalan sepanjang City Hall kek orang ga punya kerjaan yey! Tapi aku berhasil confess masa lalu kelam hiiiii</p>
+              <span class="journey-date">November 2024</span>
             </div>
           </div>
 
           <div class="journey-slide">
             <div class="journey-slide-photo">
-              <img src="Photos/2024/10. October/IMG_9014.jpeg" alt="" loading="lazy">
+              <picture><source srcset="Photos_optimized/2025/01. January/IMG_2012.webp" type="image/webp"><img src="Photos_optimized/2025/01. January/IMG_2012.jpg" alt="" loading="lazy"></picture>
             </div>
             <div class="journey-slide-text">
               <span class="journey-num">02 / 05</span>
-              <p class="journey-sentence">Universal twice, because you wanted one more ride</p>
-              <span class="journey-date">October 2024</span>
+              <p class="journey-sentence">WINGSTOP OUR NATIONAL DISH. Pas km balek ke sini buat interview, yok makan ini gaskan gaskannnn</p>
+              <span class="journey-date">January 2025</span>
             </div>
           </div>
 
           <div class="journey-slide">
             <div class="journey-slide-photo">
-              <img src="Photos/2024/06. June/IMG_6465.jpeg" alt="" loading="lazy">
+              <picture><source srcset="Photos_optimized/2025/06. June/IMG_5012.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_5012.jpg" alt="" loading="lazy"></picture>
             </div>
             <div class="journey-slide-text">
               <span class="journey-num">03 / 05</span>
-              <p class="journey-sentence">Batam for real Indonesian food, like finally</p>
-              <span class="journey-date">June 2024</span>
+              <p class="journey-sentence">Trisha with her HACIPUPU Lucu kalii. Bro lebih suka hacipupunya daripada diornya shibal</p>
+              <span class="journey-date">June 2025</span>
             </div>
           </div>
 
           <div class="journey-slide">
             <div class="journey-slide-photo">
-              <img src="Photos/2025/07. July/IMG_5237.jpeg" alt="" loading="lazy">
+              <picture><source srcset="Photos_optimized/2025/10. October/IMG_6459.webp" type="image/webp"><img src="Photos_optimized/2025/10. October/IMG_6459.jpg" alt="" loading="lazy"></picture>
             </div>
             <div class="journey-slide-text">
               <span class="journey-num">04 / 05</span>
-              <p class="journey-sentence">Lazarus and Sisters' Island by ferry, that wild one</p>
-              <span class="journey-date">July 2025</span>
+              <p class="journey-sentence">Mak Lampir cok</p>
+              <span class="journey-date">October 2025</span>
             </div>
           </div>
 
           <div class="journey-slide">
             <div class="journey-slide-photo">
-              <img src="Photos/2026/03. March/IMG_7996.jpeg" alt="" loading="lazy">
+              <picture><source srcset="Photos_optimized/2026/02. February/IMG_7877.webp" type="image/webp"><img src="Photos_optimized/2026/02. February/IMG_7877.jpg" alt="" loading="lazy"></picture>
             </div>
             <div class="journey-slide-text">
               <span class="journey-num">05 / 05</span>
-              <p class="journey-sentence">Hall 8 of NTU, where most of us actually happened</p>
-              <p class="journey-end-note">home base</p>
-              <span class="journey-date">March 2026</span>
+              <p class="journey-sentence">Makan makan makan, makan makan makan, and makan makan makan. Sampe kita GEMBROT</p>
+              <span class="journey-date">February 2026</span>
             </div>
           </div>
 
@@ -352,24 +287,34 @@
     </div>
   </section>
 
-  <!-- Section 6: What I Love About You -->
+  <!-- My Treats for Thoughts-->
   <section id="love" class="section">
     <div class="section-inner love-inner">
       <div class="love-text">
-        <p class="section-label">what i love about you</p>
-        <h2 class="section-heading js-word-reveal">Ada sesuatu yang aku suka dari kamu that I keep coming back to.</h2>
+        <p class="section-label">My treats for thoughts</p>
+        <h2 class="section-heading js-word-reveal">The Trisha I know.</h2>
         <div class="prose js-fade-prose">
-          <p>You don't have a second face. Kamu ya kamu, in front of anyone, in any room. Honest, straightforward, no performance, no act. I trust you completely because of that. There's nothing to second-guess.</p>
-          <p>And then there's how you take care of people. I don't know how you do it. You always seem to know what someone needs before they say it. Their mood, their energy, what kind of support they need right now. You take care of your friends like that. You take care of me like that. You make people feel seen, <em class="gold-line">sayang</em>, without even trying. Mau diliat dari manapun, that kind of heart is rare.</p>
+          <p>With all the moments that we spend together, I am sure that we know each other very well already. And surprisingly or unsurprisingly, the Trisha I was pursuing and the Trisha that went on with me in this journey are not the same Trisha hahaha. A wise man said that you can discover many faces inside one person. Well of course, Trisha, being the people pleaser that she is, also has that. I was worried at the start because I am afraid that I would hate your other "faces". But after all the moments, all the experiences, all the late nights we spent together. I can confidently say that no matter which face you use, you are still Trisha.</p>
+          <p>The Trisha I know and adore. The Trisha that shouts MICHAELLL when I annoy her. The Trisha that loves to eat everything munch munch munch. But also the Trisha that is laser focused when doing her work. The Trisha that give the 110% for her friends. The Trisha that put 200% of her effort for the work she cares about. The Trisha that loves her parents so much. The Trisha that prioritizes God above everything. </p>
         </div>
       </div>
       <div class="js-polaroid" style="--rot: 1deg">
         <div class="polaroid__tape"></div>
         <div class="love-photo photo-reveal">
-          <img src="Photos/2025/12. December/IMG_7013.jpeg" alt="" loading="lazy">
+          <picture><source srcset="Photos_optimized/2026/03. March/IMG_8033.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8033.jpg" alt="" loading="lazy"></picture>
         </div>
-        <span class="photo-caption">December 2025</span>
+        <span class="photo-caption">March 2026</span>
       </div>
+    </div>
+    <div class="doodle doodle--heart" aria-hidden="true" style="left:5%; top:28%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 26" width="22" height="20">
+        <path d="M14,7 C14,3.5 10.5,0 7,3.5 C3.5,0 0,3.5 0,7 C0,11 7,17 14,22 C21,17 28,11 28,7 C28,3.5 24.5,0 21,3.5 C17.5,0 14,3.5 14,7Z" fill="#D4A0B0" opacity="0.45"/>
+      </svg>
+    </div>
+    <div class="doodle doodle--swirl" aria-hidden="true" style="right:6%; bottom:20%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="32" height="32">
+        <path d="M6,31 C6,18 15,6 24,12 C32,17 30,28 21,28 C14,28 12,22 17,18 C20,16 24,19 23,23" fill="none" stroke="#C9A86A" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
     </div>
   </section>
 
@@ -379,8 +324,18 @@
       <span class="faith-icon">&#9825;</span>
       <p class="section-label" style="margin-bottom:32px;">the faith thread</p>
       <div class="prose" style="max-width:580px; margin:0 auto; text-align:center;">
-        <p>Aku ga percaya ini semua kebetulan. Time and again, things have fallen into the right place at exactly the right moment, and we both know it wasn't coincidence. We've prayed through the hard ones and praised through the good ones. NDC, GMS, JPCC, Hillsong, Elevation, that one Praise session yang beda banget rasanya. We know Who's been carrying this thing. And I'm grateful we both know it.</p>
+        <p>Aku ga percaya semua ini cuman kebetulan. From time to time, things have fallen into the right place at exactly the right moment. When we had disagreements, we always have a way to work through them. When we tried opening our hearts and our trueself, we never judge each other. It is all because of His grace, His love, and His power that we are able to come this far. So I want to keep things this way. God in the center of this relationship. Let us keep our prayer life strong and praise Him who sacrificed His life for us. PRAISE THE LORD!</p>
       </div>
+    </div>
+    <div class="doodle doodle--sparkle" aria-hidden="true" style="right:7%; top:24%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" width="22" height="22">
+        <path d="M13,1 L14.2,11 L25,13 L14.2,15 L13,25 L11.8,15 L1,13 L11.8,11 Z" fill="none" stroke="#C4B8D4" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="doodle doodle--heart" aria-hidden="true" style="left:8%; bottom:30%;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22" width="18" height="16">
+        <path d="M12,6 C12,3 9,0 6,3 C3,0 0,3 0,6 C0,9 6,14.5 12,18 C18,14.5 24,9 24,6 C24,3 21,0 18,3 C15,0 12,3 12,6Z" fill="#C4B8D4" opacity="0.55"/>
+      </svg>
     </div>
   </section>
 
@@ -394,40 +349,150 @@
   <section id="right-now" class="section">
     <div class="section-inner rightnow-inner">
       <div class="rightnow-text">
-        <p class="section-label">right now</p>
-        <h2 class="section-heading js-word-reveal">Right now you're in Thailand and I'm here.</h2>
+        <p class="section-label">Our paths</p>
+        <h2 class="section-heading js-word-reveal">Two different paths, but one in God</h2>
         <div class="prose js-fade-prose">
-          <p>The first anniversary we're spending apart. Jujur, it's strange. I got used to you just being there when I got back from outside, and now that room is quieter than I expected. Aku harus recalibrate sedikit. Which is fine. It just made me realize how much of my daily rhythm is you.</p>
-          <p>Dua bulan. I'll see you in two months. Enjoy dulu di sana ya, <em class="gold-line">sayang</em>.</p>
+          <p>Now that you have graduated from NTU, our life once again will change dramatically. There is no Michan that would annoy you again every day. There is no Trisha that would accompany me every night. Jujur aku baru kerasa banget pas km pulang beb hehe. Kek aneh and resah aja rasanya di kamar ini gaada km :]. I hope you had a blast di NTU ya, with the friends we made along the way, with the memories we created, with all the crying and laughing. </p>
+          <p>But it's okay. As a wise man said, growth cannot happen inside comfort zones. We have seen how happy it was to spend time with friends and our loved ones, but now, sadly, kita ada jalan masing masing mamaw. Don't worry, I promise that I will always make time for you and I hope you would do the same.</p>
         </div>
       </div>
       <div class="js-polaroid" style="--rot: -2.5deg">
         <div class="polaroid__tape"></div>
         <div class="rightnow-photo photo-reveal">
-          <img src="Photos/2026/05. May/IMG_9174.jpeg" alt="" loading="lazy">
+          <picture><source srcset="Photos_optimized/2026/05. May/IMG_9174.webp" type="image/webp"><img src="Photos_optimized/2026/05. May/IMG_9174.jpg" alt="" loading="lazy"></picture>
         </div>
         <span class="photo-caption">May 2026</span>
       </div>
     </div>
   </section>
 
+  <!-- Section 4: Two years, in flashes -->
+  <section id="flashes">
+    <canvas id="flashes-canvas" aria-hidden="true"></canvas>
+    <div class="flashes-title" aria-hidden="true">
+      <p>Two years, in flashes</p>
+    </div>
+    <div class="flashes-photos" id="flashes-photos">
+      <picture><source srcset="Photos_optimized/2024/01. January/IMG_0142.webp" type="image/webp"><img src="Photos_optimized/2024/01. January/IMG_0142.jpg" alt="" loading="eager"></picture>
+      <picture><source srcset="Photos_optimized/2024/02. February/IMG_0328.webp" type="image/webp"><img src="Photos_optimized/2024/02. February/IMG_0328.jpg" alt="" loading="eager"></picture>
+      <picture><source srcset="Photos_optimized/2024/02. February/IMG_0553.webp" type="image/webp"><img src="Photos_optimized/2024/02. February/IMG_0553.jpg" alt="" loading="eager"></picture>
+      <picture><source srcset="Photos_optimized/2024/02. February/IMG_1091.webp" type="image/webp"><img src="Photos_optimized/2024/02. February/IMG_1091.jpg" alt="" loading="eager"></picture>
+      <picture><source srcset="Photos_optimized/2024/02. February/IMG_1185.webp" type="image/webp"><img src="Photos_optimized/2024/02. February/IMG_1185.jpg" alt="" loading="eager"></picture>
+      <picture><source srcset="Photos_optimized/2024/03. March/IMG_1571.webp" type="image/webp"><img src="Photos_optimized/2024/03. March/IMG_1571.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/03. March/IMG_2038.webp" type="image/webp"><img src="Photos_optimized/2024/03. March/IMG_2038.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/03. March/IMG_3057.webp" type="image/webp"><img src="Photos_optimized/2024/03. March/IMG_3057.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_2746.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_2746.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_2810.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_2810.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_2988.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_2988.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_3018.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_3018.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_3027.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_3027.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/04. April/IMG_3155.webp" type="image/webp"><img src="Photos_optimized/2024/04. April/IMG_3155.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/05. May/IMG_3725.webp" type="image/webp"><img src="Photos_optimized/2024/05. May/IMG_3725.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/05. May/IMG_3852.webp" type="image/webp"><img src="Photos_optimized/2024/05. May/IMG_3852.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/05. May/IMG_4625.webp" type="image/webp"><img src="Photos_optimized/2024/05. May/IMG_4625.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/05. May/IMG_5007.webp" type="image/webp"><img src="Photos_optimized/2024/05. May/IMG_5007.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/06. June/IMG_5700.webp" type="image/webp"><img src="Photos_optimized/2024/06. June/IMG_5700.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/06. June/IMG_6465.webp" type="image/webp"><img src="Photos_optimized/2024/06. June/IMG_6465.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/07. July/IMG_7787.webp" type="image/webp"><img src="Photos_optimized/2024/07. July/IMG_7787.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/08. August/IMG_8423.webp" type="image/webp"><img src="Photos_optimized/2024/08. August/IMG_8423.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/08. August/IMG_8429.webp" type="image/webp"><img src="Photos_optimized/2024/08. August/IMG_8429.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/09. September/IMG_8564.webp" type="image/webp"><img src="Photos_optimized/2024/09. September/IMG_8564.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/09. September/IMG_8568.webp" type="image/webp"><img src="Photos_optimized/2024/09. September/IMG_8568.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/09. September/IMG_8597.webp" type="image/webp"><img src="Photos_optimized/2024/09. September/IMG_8597.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/09. September/IMG_8660.webp" type="image/webp"><img src="Photos_optimized/2024/09. September/IMG_8660.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/10. October/IMG_8974.webp" type="image/webp"><img src="Photos_optimized/2024/10. October/IMG_8974.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/10. October/IMG_9014.webp" type="image/webp"><img src="Photos_optimized/2024/10. October/IMG_9014.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/10. October/IMG_9152.webp" type="image/webp"><img src="Photos_optimized/2024/10. October/IMG_9152.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/10. October/IMG_9184.webp" type="image/webp"><img src="Photos_optimized/2024/10. October/IMG_9184.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/11. November/IMG_9291.webp" type="image/webp"><img src="Photos_optimized/2024/11. November/IMG_9291.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/11. November/IMG_9410.webp" type="image/webp"><img src="Photos_optimized/2024/11. November/IMG_9410.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/11. November/IMG_9795.webp" type="image/webp"><img src="Photos_optimized/2024/11. November/IMG_9795.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/12. December/IMG_0170.webp" type="image/webp"><img src="Photos_optimized/2024/12. December/IMG_0170.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/12. December/IMG_0176.webp" type="image/webp"><img src="Photos_optimized/2024/12. December/IMG_0176.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2024/12. December/IMG_0192.webp" type="image/webp"><img src="Photos_optimized/2024/12. December/IMG_0192.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/01. January/IMG_2012.webp" type="image/webp"><img src="Photos_optimized/2025/01. January/IMG_2012.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/02. February/IMG_2233.webp" type="image/webp"><img src="Photos_optimized/2025/02. February/IMG_2233.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/02. February/IMG_2370.webp" type="image/webp"><img src="Photos_optimized/2025/02. February/IMG_2370.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/02. February/IMG_2517.webp" type="image/webp"><img src="Photos_optimized/2025/02. February/IMG_2517.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/02. February/IMG_2723.webp" type="image/webp"><img src="Photos_optimized/2025/02. February/IMG_2723.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_2883.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_2883.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_2955.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_2955.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_2991.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_2991.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3050.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3050.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3062.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3062.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3374.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3374.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3378.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3378.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3432.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3432.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/03. March/IMG_3605.webp" type="image/webp"><img src="Photos_optimized/2025/03. March/IMG_3605.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/04. April/IMG_3723.webp" type="image/webp"><img src="Photos_optimized/2025/04. April/IMG_3723.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/04. April/IMG_3914.webp" type="image/webp"><img src="Photos_optimized/2025/04. April/IMG_3914.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/04. April/IMG_4050.webp" type="image/webp"><img src="Photos_optimized/2025/04. April/IMG_4050.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/04. April/IMG_4309.webp" type="image/webp"><img src="Photos_optimized/2025/04. April/IMG_4309.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/05. May/IMG_4394.webp" type="image/webp"><img src="Photos_optimized/2025/05. May/IMG_4394.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/05. May/IMG_4672.webp" type="image/webp"><img src="Photos_optimized/2025/05. May/IMG_4672.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_4759.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_4759.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_4860.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_4860.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_4917.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_4917.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_5012.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_5012.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_5036.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_5036.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/06. June/IMG_5137.webp" type="image/webp"><img src="Photos_optimized/2025/06. June/IMG_5137.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/07. July/IMG_5227.webp" type="image/webp"><img src="Photos_optimized/2025/07. July/IMG_5227.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/07. July/IMG_5237.webp" type="image/webp"><img src="Photos_optimized/2025/07. July/IMG_5237.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/07. July/IMG_5317.webp" type="image/webp"><img src="Photos_optimized/2025/07. July/IMG_5317.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/08. August/3_4059.webp" type="image/webp"><img src="Photos_optimized/2025/08. August/3_4059.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/08. August/IMG_5603.webp" type="image/webp"><img src="Photos_optimized/2025/08. August/IMG_5603.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/08. August/IMG_5668.webp" type="image/webp"><img src="Photos_optimized/2025/08. August/IMG_5668.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/08. August/IMG_5880.webp" type="image/webp"><img src="Photos_optimized/2025/08. August/IMG_5880.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/08. August/IMG_5924.webp" type="image/webp"><img src="Photos_optimized/2025/08. August/IMG_5924.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/09. September/IMG_6178.webp" type="image/webp"><img src="Photos_optimized/2025/09. September/IMG_6178.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/09. September/IMG_6309.webp" type="image/webp"><img src="Photos_optimized/2025/09. September/IMG_6309.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/10. October/IMG_6459.webp" type="image/webp"><img src="Photos_optimized/2025/10. October/IMG_6459.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/10. October/IMG_6528.webp" type="image/webp"><img src="Photos_optimized/2025/10. October/IMG_6528.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/11. November/IMG_6664.webp" type="image/webp"><img src="Photos_optimized/2025/11. November/IMG_6664.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/11. November/IMG_6665.webp" type="image/webp"><img src="Photos_optimized/2025/11. November/IMG_6665.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/11. November/IMG_6818.webp" type="image/webp"><img src="Photos_optimized/2025/11. November/IMG_6818.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/11. November/IMG_6884.webp" type="image/webp"><img src="Photos_optimized/2025/11. November/IMG_6884.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/12. December/IMG_6946.webp" type="image/webp"><img src="Photos_optimized/2025/12. December/IMG_6946.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/12. December/IMG_7013.webp" type="image/webp"><img src="Photos_optimized/2025/12. December/IMG_7013.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2025/12. December/IMG_7028.webp" type="image/webp"><img src="Photos_optimized/2025/12. December/IMG_7028.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/01. January/IMG_7430.webp" type="image/webp"><img src="Photos_optimized/2026/01. January/IMG_7430.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/01. January/IMG_7586.webp" type="image/webp"><img src="Photos_optimized/2026/01. January/IMG_7586.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/01. January/IMG_7596.webp" type="image/webp"><img src="Photos_optimized/2026/01. January/IMG_7596.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/02. February/IMG_7871.webp" type="image/webp"><img src="Photos_optimized/2026/02. February/IMG_7871.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/02. February/IMG_7872.webp" type="image/webp"><img src="Photos_optimized/2026/02. February/IMG_7872.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/02. February/IMG_7877.webp" type="image/webp"><img src="Photos_optimized/2026/02. February/IMG_7877.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_7985.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_7985.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_7996.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_7996.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_8033.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8033.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_8076.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8076.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_8155.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8155.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_8332.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8332.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/03. March/IMG_8345.webp" type="image/webp"><img src="Photos_optimized/2026/03. March/IMG_8345.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/04. April/IMG_8583.webp" type="image/webp"><img src="Photos_optimized/2026/04. April/IMG_8583.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/04. April/IMG_8672.webp" type="image/webp"><img src="Photos_optimized/2026/04. April/IMG_8672.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/04. April/IMG_8782.webp" type="image/webp"><img src="Photos_optimized/2026/04. April/IMG_8782.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/04. April/IMG_8965.webp" type="image/webp"><img src="Photos_optimized/2026/04. April/IMG_8965.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/04. April/IMG_9063.webp" type="image/webp"><img src="Photos_optimized/2026/04. April/IMG_9063.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/05. May/IMG_9174.webp" type="image/webp"><img src="Photos_optimized/2026/05. May/IMG_9174.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/05. May/IMG_9379.webp" type="image/webp"><img src="Photos_optimized/2026/05. May/IMG_9379.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/05. May/IMG_9397.webp" type="image/webp"><img src="Photos_optimized/2026/05. May/IMG_9397.jpg" alt="" loading="lazy"></picture>
+      <picture><source srcset="Photos_optimized/2026/05. May/IMG_9407.webp" type="image/webp"><img src="Photos_optimized/2026/05. May/IMG_9407.jpg" alt="" loading="lazy"></picture>
+    </div>
+  </section>
+
   <!-- Section 9: The Letter -->
   <section id="letter">
     <div class="letter-inner">
-      <span class="letter-salutation">Dear Trisha,</span>
       <div class="letter-body" id="letter-body">
-        <p>Thank you so much for being the best partner I could have ever asked for in these past two years. When we first met during the GL performance two and a half years ago, I could never have expected you to become such an important figure in my life. You have been one of my biggest supporters, one of my best friends, and one of the most caring people I've ever known. Terima kasih <em class="gold-line">sayang</em>, untuk semua yang sudah kamu lakukan untukku.</p>
-        <p>To be honest, without you, my life would not have been this colourful. I wouldn't feel this secure. I wouldn't be this happy. You have been my anchor. When I feel stressed, when I feel anxious, when I feel uncertain, when it feels like everything is doubting me, I know there is you to come back to. I know you will always be by my side, supporting me, giving me the push I need. Thank you for just being present in my life.</p>
-        <p>Two years, jujur, enggak kerasa sama sekali. It has flown by so fast. And now that you're not here, I really started to feel it. I've lost the presence of someone who was always there when I got back from outside. It feels so strange. I think I need to recalibrate to being alone again. This has only made me more appreciative of you, more grateful for everything you've done in the past two years.</p>
-        <p>I really enjoyed every single moment we spent together. It doesn't matter whether it was something small, like scrolling Instagram in our room, going to church and praising God together for everything He has given us and how He has guided us through hard times, or just studying side by side. Those small little things mattered the most.</p>
-        <p>And of course, the bigger memories too. We went to all the museums in Singapore. We did the river cruise. We went to Gardens by the Bay twice (don't ask me why, but twice). We watched Phantom of the Opera. We explored Changi Jewel. We went to River Wonders and watched Zootopia 2 together, such a good movie. We went to Batam to eat real Indonesian food. We even did island hopping to Lazarus Island and Sisters' Island by ferry, which was a wild one. We went to Universal Studios. Every single date was unforgettable. I really hope we can keep going on dates like these for many years to come. Semoga kamu enggak bosan sama aku ya, <em class="gold-line">sayang</em>.</p>
-        <p>I know we both have our own problems. But don't worry, aku akan push kamu terus ya, Beb. Aku enggak akan biarkan kamu males-males, tidur terus, no way. Sekarang kamu sudah kerja, kamu enggak boleh kayak gitu lagi, oke? Kamu harus fokus, kamu harus kerja lebih keras untuk masa depan kita, untuk anak-anak kita nanti. Semoga cepat dapat kerjaannya, good luck sayang. Jangan lupa minta tolong Tuhan terus dalam mencari pekerjaan. Tapi enjoy dulu di Thailand ya.</p>
-        <p>All in all, aku sangat bersyukur dengan kehadiranmu in the past two years. I'm so glad you've been by my side, and I cherish every memory we've made. At the same time, I'm really looking forward to what's next. Next year, the next two years, three years, four years. I really hope, first, that we can keep supporting each other no matter the circumstances. Full trust, full support, no half-ass anything. I want both of us to be able to truly rely on each other. And second, I hope we keep relying our relationship on God. He is the greatest, the kindest, and the one who created us all. He will be the one who guides us through this relationship.</p>
-        <p>Jadi, thank you so much, <em class="gold-line">sayang</em>. I love you. I love you so much. See you in about two months.</p>
+        <p>Gimana beb, semoga km seneng ya sama surat digital ini hehehe. Bingung lama lama mau kasi km apa lagii wkwkwk. Maap ya kalo isi suratku gitu gitu aja, jujur memang itu yang aku rasain jadi aku ungkapin terus hehe. I want to say once again thank you so much for everything, the time we spend together, the gifts, the stupid jokes, the pijet session shibal, the sakit seasons sampe Trisha ga masuk sekolah 2 minggu tae, the nangis nangis sessions gara gara stress. Lu keren.</p>
+        <p>GA SABAR banget menantikan what our life would look like in the next year. Kita bakal ketemunya di cafe atau di restoran, atau di HOTEL HERMERMEMMERMEMR. IFBNSFNWEF. Canda :]. Aku mau coba cafe hopping sama km se beb, blom pernah. Terus mau coba mancing, terus mau coba sky diving, banyak wes. Yok GASKAN.</p>
+        <p>Don't worry beb, all will be good. Because God is good. God is amazing. Kita harus tetep sering doa bareng, praise His name, and all will be fine. Believe in that.</p>
+        <p>And of course, ga sabar, dinantikan by end of next academic year kita uda jadi power couple ye. Aku uda langsing six pack, lu uda langsing cuakep kek model. Aku deans list, km jadi corporate weapon. AMIN. AMIN gaji Trisha $10,000 biar bisa bayarin Michan hahahah.</p>
+        <p>Yauda beb, segitu aja dulu surat dari Michan kepada Trisha. Shalon Namobudaya Salam Kebajikan, LOOK AT THE STARS LOOK HOW THEY SHINE FOR YOU. Happy 2nd Anniversary for both of us. Stay strong, stay humble, and of course stay ENCOK. BYE!</p>
       </div>
       <div class="letter-signature">
         <span class="sig-close">Yours,</span>
-        <span class="sig-name js-sig-reveal">Michael</span>
+        <span class="sig-name js-sig-reveal">Mikeru Chan</span>
       </div>
     </div>
     <div class="doodle doodle--swirl" aria-hidden="true" style="left:22px; top:38%;">
@@ -439,8 +504,13 @@
 
   <!-- Section 10: Final Image -->
   <section id="closing">
-    <div class="closing-photo">
-      <img src="Photos/Closing Photo 1.jpg" alt="" loading="lazy">
+    <div class="closing-photos">
+      <div class="closing-photo">
+        <picture><source srcset="Photos_optimized/Closing Photo 1.webp" type="image/webp"><img src="Photos_optimized/Closing Photo 1.jpg" alt="" loading="lazy"></picture>
+      </div>
+      <div class="closing-photo">
+        <picture><source srcset="Photos_optimized/Closing photo 2.webp" type="image/webp"><img src="Photos_optimized/Closing photo 2.jpg" alt="" loading="lazy"></picture>
+      </div>
     </div>
   </section>
 

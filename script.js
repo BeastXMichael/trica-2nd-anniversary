@@ -182,10 +182,11 @@ function initScrollAnimations() {
   initWordReveals();
   initPhotoReveals();
   initProseReveals();
-  initKids3D();
+  initFlashes();
   initJourney();
   initLetterReveal();
   initClosingPhoto();
+  initFavoriteBurst();
 }
 
 /* Word-by-word heading reveals */
@@ -352,68 +353,173 @@ function fireHeartsShower() {
 }
 
 /* ===================================================
-   KIDS 3D PARALLAX
+   FLASHES — PINNED SCRUB + HEART PARTICLES
 =================================================== */
-function initKids3D() {
-  const stage = document.getElementById('kids-stage');
-  if (!stage) return;
+function initFlashes() {
+  const section = document.getElementById('flashes');
+  if (!section) return;
 
-  const cards = Array.from(stage.querySelectorAll('.doll-card'));
+  const photos  = Array.from(section.querySelectorAll('#flashes-photos img'));
+  const titleEl = section.querySelector('.flashes-title p');
+  const canvas  = document.getElementById('flashes-canvas');
+  const n       = photos.length;
+  if (!n) return;
+
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  if (isMobile) {
-    // Mobile: simple staggered fade-in, no 3D transforms
-    gsap.to(cards, {
-      opacity: 1,
-      stagger: 0.12,
-      duration: 0.9,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: '#kids', start: 'top 80%', toggleActions: 'play none none none' }
-    });
-    return;
+  /* --------------------------------------------------
+     GSAP Scrub Timeline
+  -------------------------------------------------- */
+  const tl = gsap.timeline({ defaults: { ease: 'none' } });
+
+  // Title: visible at start, fade out after ~8 photos
+  tl.fromTo(titleEl, { opacity: 0 }, { opacity: 1, duration: 0.6 }, 0);
+  tl.to(titleEl, { opacity: 0, duration: 1.5 }, 7);
+
+  // Each photo occupies 1 timeline unit
+  photos.forEach((img, i) => {
+    // Fade in
+    tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.22 }, i);
+    // Ken Burns: scale across the full slot
+    tl.fromTo(img, { scale: 1 }, { scale: 1.05, duration: 1 }, i);
+    // Fade out into next (overlap crossfade)
+    if (i < n - 1) {
+      tl.to(img, { opacity: 0, duration: 0.22 }, i + 0.78);
+    }
+  });
+
+  // Extra hold on last photo before unpin
+  tl.to({}, { duration: 1 });
+
+  // 50px of scroll per photo; extra 1-unit hold adds 50px more
+  const scrollDist = (n + 1) * 50;
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: `+=${scrollDist}`,
+    pin: true,
+    scrub: 1,
+    animation: tl,
+    anticipatePin: 1,
+    invalidateOnRefresh: true,
+  });
+
+  /* --------------------------------------------------
+     Progressive image preloading as scrub advances
+  -------------------------------------------------- */
+  const AHEAD = 4;
+  const preloaded = new Set([0, 1, 2, 3, 4]); // first 5 already eager
+
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: `+=${scrollDist}`,
+    onUpdate(self) {
+      const cur = Math.floor(self.progress * n);
+      for (let j = cur; j <= Math.min(cur + AHEAD, n - 1); j++) {
+        if (!preloaded.has(j)) {
+          preloaded.add(j);
+          photos[j].setAttribute('loading', 'eager');
+          // Kick off load by reassigning src
+          const s = photos[j].src;
+          if (!photos[j].complete) { photos[j].src = ''; photos[j].src = s; }
+        }
+      }
+    }
+  });
+
+  /* --------------------------------------------------
+     Heart Particle Canvas
+  -------------------------------------------------- */
+  if (!canvas) return;
+
+  const GOLD = 'rgba(201,168,106,0.58)';
+  const ROSE = 'rgba(212,160,176,0.58)';
+  const COUNT = isMobile ? 12 : 30;
+  const FADE_ZONE = 90;
+
+  let ctx, w, h, particles = [], rafId = null, active = false;
+
+  function resize() {
+    w = canvas.width  = canvas.clientWidth  || window.innerWidth;
+    h = canvas.height = canvas.clientHeight || window.innerHeight;
   }
 
-  // Set each card's Z depth in 3D space
-  cards.forEach(card => {
-    gsap.set(card, { z: parseFloat(card.dataset.depth) || 0 });
-  });
+  function heartPath(cx, cy, size) {
+    const r = size * 0.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + r * 0.35);
+    ctx.bezierCurveTo(cx - r * 0.55, cy - r * 0.25, cx - r * 1.5, cy - r * 0.85, cx, cy - r * 1.1);
+    ctx.bezierCurveTo(cx + r * 1.5, cy - r * 0.85, cx + r * 0.55, cy - r * 0.25, cx, cy + r * 0.35);
+    ctx.closePath();
+  }
 
-  // Staggered entrance, then continuous float per card
-  cards.forEach((card, i) => {
-    gsap.fromTo(card,
-      { opacity: 0, y: 48 },
-      {
-        opacity: 1, y: 0,
-        duration: 1.2, ease: 'power2.out',
-        delay: i * 0.18,
-        onComplete() {
-          gsap.to(card, {
-            y: -10, yoyo: true, repeat: -1,
-            duration: 4 + i * 0.4,
-            ease: 'sine.inOut',
-            delay: i * 0.7
-          });
-        },
-        scrollTrigger: { trigger: '#kids', start: 'top 72%', toggleActions: 'play none none none' }
+  function spawnParticle(spreadY) {
+    return {
+      x: Math.random() * w,
+      y: spreadY !== undefined ? spreadY : h + 20,
+      size: 10 + Math.random() * 9,
+      vy: 0.45 + Math.random() * 0.85,
+      swayAmp: 0.25 + Math.random() * 0.5,
+      swayFreq: 0.018 + Math.random() * 0.022,
+      phase: Math.random() * Math.PI * 2,
+      t: 0,
+      color: Math.random() < 0.5 ? GOLD : ROSE,
+    };
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < COUNT; i++) {
+      particles.push(spawnParticle(Math.random() * h));
+    }
+  }
+
+  function tick() {
+    if (!active) { rafId = null; return; }
+    rafId = requestAnimationFrame(tick);
+
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.y -= p.vy;
+      p.x += Math.sin(p.t * p.swayFreq * 80 + p.phase) * p.swayAmp;
+      p.t++;
+
+      if (p.y < -p.size) {
+        particles[i] = spawnParticle();
+        continue;
       }
-    );
-  });
 
-  // Mouse-driven 3D tilt with lerp
-  let tRX = 0, tRY = 0, cRX = 0, cRY = 0;
+      const fadeIn  = Math.min(1, (h - p.y) / FADE_ZONE);
+      const fadeOut = Math.min(1, p.y / FADE_ZONE);
+      const alpha   = Math.min(fadeIn, fadeOut);
+      if (alpha <= 0) continue;
 
-  stage.addEventListener('mousemove', e => {
-    const r = stage.getBoundingClientRect();
-    tRX = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -7;
-    tRY = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  9;
-  });
-  stage.addEventListener('mouseleave', () => { tRX = 0; tRY = 0; });
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle   = p.color;
+      heartPath(p.x, p.y, p.size);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
 
-  gsap.ticker.add(() => {
-    cRX += (tRX - cRX) * 0.08;
-    cRY += (tRY - cRY) * 0.08;
-    gsap.set(stage, { rotateX: cRX, rotateY: cRY, transformPerspective: 1200 });
-  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      active = e.isIntersecting;
+      if (active && !rafId) rafId = requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.01 });
+
+  ctx = canvas.getContext('2d');
+  resize();
+  initParticles();
+  observer.observe(section);
+
+  window.addEventListener('resize', () => { resize(); initParticles(); });
 }
 
 /* ===================================================
@@ -470,17 +576,20 @@ function initLetterReveal() {
    CLOSING PHOTO
 =================================================== */
 function initClosingPhoto() {
-  const img = document.querySelector('.closing-photo img');
-  if (!img) return;
+  const imgs = document.querySelectorAll('.closing-photo img');
+  if (!imgs.length) return;
 
-  gsap.fromTo(img,
-    { opacity: 0, scale: 1.08 },
-    {
-      opacity: 1, scale: 1,
-      duration: 2.2, ease: 'power2.out',
-      scrollTrigger: { trigger: '#closing', start: 'top 75%', toggleActions: 'play none none none' }
-    }
-  );
+  imgs.forEach((img, i) => {
+    gsap.fromTo(img,
+      { opacity: 0, scale: 1.08 },
+      {
+        opacity: 1, scale: 1,
+        duration: 2.2, ease: 'power2.out',
+        delay: i * 0.25,
+        scrollTrigger: { trigger: '#closing', start: 'top 75%', toggleActions: 'play none none none' }
+      }
+    );
+  });
 }
 
 /* ===================================================
@@ -516,3 +625,116 @@ function initClosingPhoto() {
 })();
 
 /* Section backgrounds handled by CSS (body bg-breathe animation + per-section CSS) */
+
+/* ===================================================
+   AMBIENT FLOATING PARTICLES (global, always running)
+=================================================== */
+(function initAmbientParticles() {
+  const canvas = document.getElementById('ambient-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const COUNT = isMobile ? 14 : 32;
+  let w, h, particles = [];
+
+  function resize() {
+    w = canvas.width  = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  function heartPath(cx, cy, s) {
+    const r = s * 0.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy + r * 0.35);
+    ctx.bezierCurveTo(cx - r*0.55, cy - r*0.25, cx - r*1.5, cy - r*0.85, cx, cy - r*1.1);
+    ctx.bezierCurveTo(cx + r*1.5, cy - r*0.85, cx + r*0.55, cy - r*0.25, cx, cy + r*0.35);
+    ctx.closePath();
+  }
+
+  function spawn(initialY) {
+    return {
+      x:        Math.random() * w,
+      y:        initialY !== undefined ? initialY : h + 16,
+      size:     3.5 + Math.random() * 5.5,
+      vy:       0.18 + Math.random() * 0.32,
+      swayAmp:  0.2  + Math.random() * 0.5,
+      swayFreq: 0.01 + Math.random() * 0.016,
+      phase:    Math.random() * Math.PI * 2,
+      t:        0,
+      isHeart:  Math.random() < 0.4,
+      isGold:   Math.random() < 0.5,
+      maxAlpha: 0.14 + Math.random() * 0.12
+    };
+  }
+
+  function init() {
+    particles = [];
+    for (let i = 0; i < COUNT; i++) particles.push(spawn(Math.random() * h));
+  }
+
+  function tick() {
+    requestAnimationFrame(tick);
+    if (document.hidden) return;
+    ctx.clearRect(0, 0, w, h);
+    const FADE = h * 0.09;
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.y  -= p.vy;
+      p.x  += Math.sin(p.t * p.swayFreq * 80 + p.phase) * p.swayAmp;
+      p.t++;
+      if (p.y < -16) { particles[i] = spawn(); continue; }
+      const fi = Math.min(1, (h - p.y) / FADE);
+      const fo = Math.min(1, p.y / FADE);
+      const alpha = Math.min(fi, fo) * p.maxAlpha;
+      if (alpha <= 0) continue;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = p.isGold ? '#C9A86A' : '#D4A0B0';
+      if (p.isHeart) { heartPath(p.x, p.y, p.size); }
+      else           { ctx.beginPath(); ctx.arc(p.x, p.y, p.size * 0.42, 0, Math.PI * 2); }
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  resize();
+  init();
+  requestAnimationFrame(tick);
+  window.addEventListener('resize', () => { resize(); init(); });
+})();
+
+/* ===================================================
+   FAVORITE SECTION — PETAL BURST ON SCROLL ENTRY
+=================================================== */
+function initFavoriteBurst() {
+  const section = document.getElementById('favorite');
+  if (!section) return;
+
+  const HEART = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="#D4A0B0" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 z"/></svg>`;
+  const STAR  = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path fill="#C9A86A" d="M14,1 L15.3,11.5 L26,14 L15.3,16.5 L14,27 L12.7,16.5 L2,14 L12.7,11.5 Z"/></svg>`;
+
+  let fired = false;
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top 72%',
+    onEnter() {
+      if (fired) return;
+      fired = true;
+      for (let i = 0; i < 14; i++) {
+        const div = document.createElement('div');
+        div.innerHTML = Math.random() < 0.55 ? HEART : STAR;
+        const size = 9 + Math.random() * 12;
+        const dur  = 5 + Math.random() * 4;
+        const del  = Math.random() * 1.8;
+        const startX = 10 + Math.random() * 80;
+        div.style.cssText = `position:fixed;bottom:-30px;left:${startX}%;`
+          + `width:${size}px;pointer-events:none;z-index:9999;opacity:0;`;
+        document.body.appendChild(div);
+        gsap.timeline({ delay: del, onComplete: () => div.remove() })
+          .to(div, { opacity: 0.75, duration: 0.4, ease: 'power1.out' })
+          .to(div, { y: -(window.innerHeight * 0.65 + Math.random() * window.innerHeight * 0.2), x: (Math.random() - 0.5) * 120, rotate: (Math.random() - 0.5) * 360, duration: dur, ease: 'power1.out' }, 0)
+          .to(div, { opacity: 0, duration: 1.2, ease: 'power1.in' }, dur - 1.3);
+      }
+    }
+  });
+}
