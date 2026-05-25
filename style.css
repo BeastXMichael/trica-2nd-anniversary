@@ -508,7 +508,7 @@ body.cursor-hover #cursor-ring {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
-  margin-bottom: 100px;
+  margin-bottom: 32px;
 }
 
 .texture-block:last-child { margin-bottom: 0; }
