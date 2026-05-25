@@ -368,6 +368,12 @@ function initFlashes() {
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
+  // Pre-decode the first batch so they are GPU-ready before the section pins
+  photos.slice(0, 10).forEach(img => { if (img.decode) img.decode().catch(() => {}); });
+
+  // Photo 0 starts visible -- prevents the black-background flash on entry
+  gsap.set(photos[0], { opacity: 1 });
+
   /* --------------------------------------------------
      GSAP Scrub Timeline
   -------------------------------------------------- */
@@ -379,13 +385,16 @@ function initFlashes() {
 
   // Each photo occupies 1 timeline unit
   photos.forEach((img, i) => {
-    // Fade in
-    tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.22 }, i);
-    // Ken Burns: scale across the full slot
-    tl.fromTo(img, { scale: 1 }, { scale: 1.05, duration: 1 }, i);
-    // Fade out into next (overlap crossfade)
-    if (i < n - 1) {
-      tl.to(img, { opacity: 0, duration: 0.22 }, i + 0.78);
+    if (i === 0) {
+      // Photo 0 is already visible; only define its scale and crossfade-out
+      tl.fromTo(img, { scale: 1 }, { scale: 1.05, duration: 1 }, 0);
+      tl.to(img, { opacity: 0, duration: 0.22 }, 0.78);
+    } else {
+      tl.fromTo(img, { opacity: 0 }, { opacity: 1, duration: 0.22 }, i);
+      tl.fromTo(img, { scale: 1 }, { scale: 1.05, duration: 1 }, i);
+      if (i < n - 1) {
+        tl.to(img, { opacity: 0, duration: 0.22 }, i + 0.78);
+      }
     }
   });
 
@@ -400,7 +409,7 @@ function initFlashes() {
     start: 'top top',
     end: `+=${scrollDist}`,
     pin: true,
-    scrub: 1,
+    scrub: 0.5,
     animation: tl,
     anticipatePin: 1,
     invalidateOnRefresh: true,
