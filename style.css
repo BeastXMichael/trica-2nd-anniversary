@@ -507,7 +507,7 @@ body.cursor-hover #cursor-ring {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  align-items: center;
+  align-items: start;
   margin-bottom: 100px;
 }
 
