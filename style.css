@@ -878,6 +878,75 @@ body.cursor-hover #cursor-ring {
 }
 
 /* ===================================================
+   CHIBI SPRITES
+=================================================== */
+.chibi-sprite {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+}
+.chibi-sprite img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.chibi-story {
+  width: 300px;
+  aspect-ratio: 1122 / 1402;
+  margin: 36px auto 0;
+}
+
+@media (max-width: 768px) {
+  .chibi-story { width: 200px; }
+}
+
+.texture-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.chibi-pillow {
+  width: 280px;
+  aspect-ratio: 1448 / 1086;
+}
+
+.chibi-gendeng {
+  width: 200px;
+  aspect-ratio: 1122 / 1402;
+  margin: 16px 0 24px;
+}
+
+.chibi-tickle {
+  width: 200px;
+  aspect-ratio: 1122 / 1402;
+  display: block;
+  margin: 0 auto 1.8em;
+}
+
+.chibi-chase-closing {
+  width: 160px;
+  aspect-ratio: 1448 / 1086;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .chibi-pillow        { width: 200px; }
+  .chibi-gendeng       { width: 140px; }
+  .chibi-tickle        { width: 150px; }
+  .chibi-chase-closing { width: 96px; }
+}
+
+/* ===================================================
    RESPONSIVE
 =================================================== */
 @media (max-width: 1024px) {

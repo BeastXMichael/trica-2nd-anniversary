@@ -187,6 +187,7 @@ function initScrollAnimations() {
   initLetterReveal();
   initClosingPhoto();
   initFavoriteBurst();
+  initChibiSprites();
 }
 
 /* Word-by-word heading reveals */
@@ -736,5 +737,90 @@ function initFavoriteBurst() {
           .to(div, { opacity: 0, duration: 1.2, ease: 'power1.in' }, dur - 1.3);
       }
     }
+  });
+}
+
+/* ===================================================
+   CHIBI SPRITES
+=================================================== */
+function initChibiSprites() {
+  const BASE = 'Assets/Animations_transparent/';
+
+  document.querySelectorAll('.chibi-sprite').forEach(el => {
+    const anim  = el.dataset.anim;
+    const count = parseInt(el.dataset.frames, 10);
+    const hold  = parseInt(el.dataset.fps  || '1400', 10);
+    const fade  = parseInt(el.dataset.fade || '280',  10);
+
+    // Two stacked layers - A/B double buffer so src never changes on a visible frame
+    const layerBot = document.createElement('img');
+    const layerTop = document.createElement('img');
+    [layerBot, layerTop].forEach(img => {
+      img.alt = '';
+      img.style.cssText =
+        'position:absolute;inset:0;width:100%;height:100%;' +
+        'object-fit:contain;display:block;' +
+        'transition:opacity ' + fade + 'ms ease-in-out;';
+    });
+    layerBot.style.opacity = '0';
+    layerTop.style.opacity = '0';
+    el.appendChild(layerBot);
+    el.appendChild(layerTop);
+
+    // bot = currently visible layer, top = staging layer
+    let bot   = layerBot;
+    let top   = layerTop;
+    let cur   = 0;
+    let timer = null;
+    let ready = false;
+    const srcs = [];
+
+    // Preload every frame before starting
+    let loaded = 0;
+    for (let i = 0; i < count; i++) {
+      srcs.push(BASE + encodeURIComponent(anim) + '/' + (i + 1) + '.png');
+      const img = new Image();
+      img.onload = () => {
+        loaded++;
+        if (loaded === count) {
+          ready = true;
+          // Show first frame on bot immediately, no transition
+          bot.style.transition = 'none';
+          bot.src = srcs[0];
+          bot.style.opacity = '1';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              bot.style.transition = 'opacity ' + fade + 'ms ease-in-out';
+              if (visible) schedule();
+            });
+          });
+        }
+      };
+      img.src = srcs[i];
+    }
+
+    function advance() {
+      cur = (cur + 1) % count;
+      // Stage next frame on the hidden layer (already in browser cache, no pop)
+      top.src = srcs[cur];
+      top.style.opacity = '1';
+      bot.style.opacity = '0';
+      // Swap roles
+      const tmp = top; top = bot; bot = tmp;
+      schedule();
+    }
+
+    function schedule() { timer = setTimeout(advance, hold); }
+
+    function pause() { clearTimeout(timer); timer = null; }
+
+    let visible = false;
+    const io = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      if (visible && ready && timer === null) schedule();
+      if (!visible) pause();
+    }, { threshold: 0.1 });
+
+    io.observe(el);
   });
 }
