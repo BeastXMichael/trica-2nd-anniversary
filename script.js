@@ -768,18 +768,18 @@ function initFavoriteBurst() {
 =================================================== */
 function initMusicTransition() {
   let triggered = false;
+  const para = document.querySelector('#love .js-fade-prose p');
+  if (!para) return;
 
   ScrollTrigger.create({
-    trigger: '#favorite',
-    start: 'top 80%',
+    trigger: para,
+    start: 'center center',
     onEnter() {
       if (triggered) return;
       triggered = true;
-      setTimeout(() => {
-        hasTransitioned = true;
-        loadTrack(1, isPlaying);
-        if (isPlaying) setPlaying(true);
-      }, 2000);
+      hasTransitioned = true;
+      loadTrack(1, isPlaying);
+      if (isPlaying) setPlaying(true);
     }
   });
 }
