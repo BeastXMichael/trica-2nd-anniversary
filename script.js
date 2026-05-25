@@ -768,18 +768,21 @@ function initFavoriteBurst() {
 =================================================== */
 function initMusicTransition() {
   let triggered = false;
-  const para = document.querySelector('#love .js-fade-prose p');
-  if (!para) return;
+  const paras = document.querySelectorAll('#love .js-fade-prose p');
+  const para2 = paras[1]; // second paragraph, ends with "prioritizes God above everything."
+  if (!para2) return;
 
   ScrollTrigger.create({
-    trigger: para,
-    start: 'center center',
+    trigger: para2,
+    start: 'bottom 80%', // fires when the last line of p2 enters the viewport
     onEnter() {
       if (triggered) return;
       triggered = true;
-      hasTransitioned = true;
-      loadTrack(1, isPlaying);
-      if (isPlaying) setPlaying(true);
+      setTimeout(() => {
+        hasTransitioned = true;
+        loadTrack(1, isPlaying);
+        if (isPlaying) setPlaying(true);
+      }, 2000);
     }
   });
 }
