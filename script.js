@@ -15,6 +15,7 @@ try {
    AUDIO PLAYER
 =================================================== */
 const SONGS = [
+  { title: 'Beautiful Rain',            src: 'Songs/Song 0 - Beautiful Rain.mp3' },
   { title: 'Menarilah - NDC Worship',   src: 'Songs/Song 1 - NDC Worship - Menarilah (Live).mp3' },
   { title: 'Confidence - Sanctus Real', src: 'Songs/Song 2 - Sanctus Real - Confidence lyrics video.mp3' },
   { title: 'Kau 1, 2, 3... - GMS Live', src: 'Songs/Song 3 - Kau 1, 2, 3... (Live Recording) - GMS Live (Official Video).mp3' },
@@ -35,9 +36,10 @@ const iconPause = document.getElementById('icon-pause');
 const iconUnmuted = document.getElementById('icon-unmuted');
 const iconMuted   = document.getElementById('icon-muted');
 
-let currentTrack = 0;
-let isPlaying    = false;
-let isMuted      = false;
+let currentTrack    = 0;
+let isPlaying       = false;
+let isMuted         = false;
+let hasTransitioned = false; // true once the #favorite trigger fires; Song 0 never plays again
 
 function fmt(s) {
   if (!s || isNaN(s)) return '0:00';
@@ -47,7 +49,11 @@ function fmt(s) {
 }
 
 function loadTrack(idx, autoPlay) {
-  currentTrack = ((idx % SONGS.length) + SONGS.length) % SONGS.length;
+  const min = hasTransitioned ? 1 : 0;
+  const max = SONGS.length - 1;
+  if (idx > max) idx = min;
+  if (idx < min) idx = max;
+  currentTrack = idx;
   audio.src    = SONGS[currentTrack].src;
   songTitle.textContent = SONGS[currentTrack].title;
   progress.value = 0;
@@ -78,7 +84,14 @@ btnPrev.addEventListener('click', () => loadTrack(currentTrack - 1, isPlaying));
 btnNext.addEventListener('click', () => loadTrack(currentTrack + 1, isPlaying));
 btnMute.addEventListener('click', () => setMuted(!isMuted));
 
-audio.addEventListener('ended', () => { loadTrack(currentTrack + 1, true); setPlaying(true); });
+audio.addEventListener('ended', () => {
+  if (currentTrack === 0 && !hasTransitioned) {
+    loadTrack(0, true); // Song 0 loops until the trigger fires
+  } else {
+    loadTrack(currentTrack + 1, true);
+  }
+  setPlaying(true);
+});
 audio.addEventListener('loadedmetadata', () => { timeTot.textContent = fmt(audio.duration); });
 audio.addEventListener('timeupdate', () => {
   if (!audio.duration) return;
@@ -188,6 +201,7 @@ function initScrollAnimations() {
   initClosingPhoto();
   initFavoriteBurst();
   initChibiSprites();
+  initMusicTransition();
 }
 
 /* Word-by-word heading reveals */
@@ -745,6 +759,27 @@ function initFavoriteBurst() {
           .to(div, { y: -(window.innerHeight * 0.65 + Math.random() * window.innerHeight * 0.2), x: (Math.random() - 0.5) * 120, rotate: (Math.random() - 0.5) * 360, duration: dur, ease: 'power1.out' }, 0)
           .to(div, { opacity: 0, duration: 1.2, ease: 'power1.in' }, dur - 1.3);
       }
+    }
+  });
+}
+
+/* ===================================================
+   MUSIC TRANSITION
+=================================================== */
+function initMusicTransition() {
+  let triggered = false;
+
+  ScrollTrigger.create({
+    trigger: '#favorite',
+    start: 'top 80%',
+    onEnter() {
+      if (triggered) return;
+      triggered = true;
+      setTimeout(() => {
+        hasTransitioned = true;
+        loadTrack(1, isPlaying);
+        if (isPlaying) setPlaying(true);
+      }, 2000);
     }
   });
 }
